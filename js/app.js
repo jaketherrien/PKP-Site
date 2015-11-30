@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MainApp', ['ngSanitize', 'ui.router'])
-.config(function($stateProvider){
+.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state('home', {
 			url: '/', //"root" directory
@@ -36,7 +36,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router'])
 			url: '/contact',
 			templateUrl: 'partials/contact.html'
 		})
-
+		$urlRouterProvider.otherwise('/');
 })
 
 //Controller for About page
