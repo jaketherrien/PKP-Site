@@ -36,6 +36,12 @@ angular.module('MainApp', ['ngSanitize', 'ui.router'])
 			url: '/contact',
 			templateUrl: 'partials/contact.html'
 		})
+
+		.state('admin', {
+			url: '/admin',
+			templateUrl: 'partials/admin.html'
+		})
+
 		$urlRouterProvider.otherwise('/');
 })
 

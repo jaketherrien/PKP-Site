@@ -1,0 +1,55 @@
+<div>
+    <h1>Admin Page</h1>
+    <br>
+
+    <h3>Announcements</h3>
+    <table class="table">
+        <tr>
+            <th>Description</th>
+            <th>
+        </tr>
+<!-- Will use ng-repeat for the Firebase json -->
+        <tr> 
+            <td>Tomorrow we will be hosting our first rush event of the year!</td>
+            <td><i class="fa fa-trash-o" ng-click="remove($index)"></i></td>
+    </table>
+
+    <h3>Events</h3>
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Description</th>
+            <th>
+        </tr>
+<!-- Will use ng-repeat for the Firebase json -->
+        <tr> 
+            <td>House Tour</td>
+            <td>123 Main St</td>
+            <td>02/15</td>
+            <td>12:00PM</td>
+            <td>A house tour will be given to prospective members to show them a glimpse of what it is like to be a brother in Pi Kappa Phi.</td>
+            <td><i class="fa fa-trash-o"></i></td>
+    </table>
+
+
+    <h3>New Members</h3>
+        <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>High School</th>
+            <th>High School Graduation Year</th>
+            <th>
+        </tr>
+        <!-- Will use ng-repeat for the Mandrill API call -->
+        <tr> 
+            <td>Peter Adams</td>
+            <td>peter@uw.edu</td>
+            <td>Alabama High School</td>
+            <td>2015</td>
+            <td><i class="fa fa-trash-o"></i></td>
+    </table>
+</div>
