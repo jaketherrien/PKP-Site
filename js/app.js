@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp', ['ngSanitize', 'ui.router'])
+angular.module('MainApp', ['ngSanitize', 'ui.router', 'firebase'])
 .config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state('home', {
@@ -39,6 +39,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router'])
 		$urlRouterProvider.otherwise('/');
 })
 
+
 //Controller for About page
 .controller('AboutCtrl', ['$scope', '$http', function($scope, $http) {
 
@@ -58,5 +59,46 @@ angular.module('MainApp', ['ngSanitize', 'ui.router'])
 .controller('PhilanthropyCtrl', ['$scope', '$http', function($scope, $http) {
 
 }])
+
+//Controller for Admin page
+.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject',
+	function($scope, $http, $firebaseArray, $firebaseObject) {
+
+	// reference to app
+    var ref = new Firebase("http://pkpadmin.firebaseio.com");
+
+    //reference to a value in the JSON in the Sky
+
+    var announceRef = ref.child('announcements');
+    var eventRef = ref.child('events');
+
+    $scope.announce = $firebaseObject(announceRef);
+    $scope.events = $firebaseObject(eventRef);
+
+    $scope.newAnnounce = {};
+    $scope.newEvent = {};
+
+    $scope.addAnnounce = function() {
+    	var newAnnounceInfo = {
+                'description': $scope.newAnnounce.description
+
+        }
+    	$scope.announce.$save();
+    }
+
+    $scope.addEvent = function() {
+    	var newEventInfo = {
+                'title': $scope.newEvent.title,
+                'location': $scope.newEvent.location,
+                'date': $scope.newEvent.date,
+                'time': $scope.newEvent.time, 
+                'description': $scope.newEvent.description
+       	}
+    	$scope.events.$save();
+    }
+
+}])
+
+
 
 
