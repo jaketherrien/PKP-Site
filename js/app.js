@@ -71,7 +71,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router', 'firebase'])
 	function($scope, $http, $firebaseArray, $firebaseObject) {
 
 	// reference to app
-    var ref = new Firebase("http://pkpadmin.firebaseio.com");
+    var ref = new Firebase("http://pkpwebsite.firebaseio.com");
 
     //reference to a value in the JSON in the Sky
 
