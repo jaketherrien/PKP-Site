@@ -7,7 +7,7 @@ body {
 
 }
 
-div {
+.partials {
 	-webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 1s; /* Firefox < 16 */
     -ms-animation: fadein 1s; /* Internet Explorer */
@@ -84,12 +84,11 @@ div {
 }
 
 .current {
-	background-color: white;
-
+	background-color: rgb(231,166,20);
 }
 
 #camera_wrap_1 {
-	height: 200px;
+	height: 100px;
 }
 
 .events {
@@ -107,12 +106,12 @@ div {
 	background-color: rgb(0,85,150);
 }
 
-header {
-	height: 50px;
-}
-
 h2, h3 {
 	color: rgb(0,85,150);
+}
+
+header {
+	height: 50px;
 }
 
 .icon-bar {
