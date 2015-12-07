@@ -89,3 +89,7 @@ nav a:hover {
 	float: left;
 	margin: 1em;
 }
+
+#error {
+	color: red;
+}
