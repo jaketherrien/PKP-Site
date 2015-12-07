@@ -1,11 +1,15 @@
+// Script for Angular controllers
+
 'use strict';
 
-angular.module('MainApp', ['ngSanitize', 'ui.router'])
-.config(function($stateProvider, $urlRouterProvider){
+angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap'])
+.config(function($stateProvider,$urlRouterProvider){
+
 	$stateProvider
 		.state('home', {
 			url: '/', //"root" directory
-			templateUrl: 'partials/home.html'
+			templateUrl: 'partials/home.html',
+			controller: 'HomeCtrl'
 		})
 
 		.state('about', {
@@ -36,8 +40,30 @@ angular.module('MainApp', ['ngSanitize', 'ui.router'])
 			url: '/contact',
 			templateUrl: 'partials/contact.html'
 		})
-		$urlRouterProvider.otherwise('/');
+
+	// For any unmatched url, redirect to "home"
+	$urlRouterProvider.otherwise('/');
+
 })
+
+//Controller for Home page
+.controller('HomeCtrl', ['$scope','$http','$uibModal', function($scope, $http, $uibModal) {
+ 	$scope.eventDetail = function() {
+			//show modal!
+			var modalInstance = $uibModal.open({
+			   templateUrl: 'partials/event-detail-modal.html',
+			   controller: 'EventModalCtrl',
+			   scope: $scope //pass in all our scope variables!
+			});
+ 	}
+}])
+
+.controller('EventModalCtrl',['$scope','$http','$uibModalInstance', function($scope, $http, $uibModalInstance) {
+  //when hit cancel, close
+  $scope.cancel = function () {
+     $uibModalInstance.dismiss('cancel');
+  };
+}])
 
 //Controller for About page
 .controller('AboutCtrl', ['$scope', '$http', function($scope, $http) {

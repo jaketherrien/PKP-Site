@@ -1,37 +1,69 @@
-<div id="frontImg"></div>
-<div class="container">
 
-	<div class="container section col-md-6">
-		<h2>Annoucements</h2>
-		<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div lass="container">
+	
+	<div id="eventBox" class="container col-sm-3">
+		<h2>Upcoming Events</h2>
+		<div class="events" ng-click="eventDetail()">
+			<h4>Event title</h4>
+			<p>MGH 420 <br>
+			Dec 10, 2015 3:00PM</p>
+		</div>
 	</div>
 
-	<div class="container section col-md-6">
-		<h2>Upcoming Events</h2>
+	<div class="container col-sm-9">
+	  <h2>Annoucements</h2>
+	  <div class="panel-group">
+
+	    <div class="panel panel-default">
+	      <div class="panel-heading">
+	        <h4 class="panel-title">
+	          <a data-toggle="collapse" href="#announce1">Annoucement title</a>
+	        </h4>
+	      </div> <!-- panel-heading -->
+	      <div id="announce1" class="panel-collapse collapse">
+	        <div class="panel-body">
+				<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	        </div> <!-- panel-body -->
+	      </div> <!-- annouce1 -->
+	  	</div> <!-- panel -->
+
+	  	<div class="panel panel-default">
+	      <div class="panel-heading">
+	        <h4 class="panel-title">
+	          <a data-toggle="collapse" href="#announce2">Annoucement title</a>
+	        </h4>
+	      </div> <!-- panel-heading -->
+	      <div id="announce2" class="panel-collapse collapse">
+	        <div class="panel-body">
+				<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	        </div> <!-- panel-body -->
+	      </div> <!-- annouce2 -->
+	  	</div> <!-- panel -->
+
+	  </div> <!-- panel-group -->
+	</div> <!-- container -->  
+
+
+
+	<div class="container col-sm-9">
+		<h2>Brother of the Month</h2>
+		<img id="bomImg" src="img/husky.jpg" alt="sample image of husky"/>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-
-	<div class="container section col-md-6">
-		<img src="img/husky.jpg" alt="sample image of husky"/>
-		<div class="container">
-			<h2>Brother of the Month</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
 	</div>
     
 </div>
