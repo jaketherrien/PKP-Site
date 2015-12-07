@@ -89,4 +89,16 @@ nav a:hover {
 .section img{
 	float: left;
 	margin: 1em;
+
+}
+
+.ability {
+	float: right;
+	height: 300px;
+	margin-left: 1em;
+	border-radius: 5px;
+}
+
+.bottom {
+	margin-bottom: 1.5em;
 }
