@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-<div ng-controller="AdminCtrl" class="partials" ng-show="userId">
-=======
-<div ng-controller="AdminCtrl" class="partials container">
->>>>>>> cb75f6e2248090b55c109e4d9cec8d0fdcb24cf1
+<!-- Show only when logged in -->
+<div ng-controller="AdminCtrl" class="partials container" ng-show="userId">
+
     <h1>Admin Page</h1>
     <br>
 
@@ -60,12 +58,6 @@
             <td>2015</td>
             <td><i class="fa fa-trash-o"></i></td>
     </table>
-<<<<<<< HEAD
-</div>
-
-
-
-=======
     <button id="orderButton" type='submit' class="btn btn-primary">Clear all New Members</button>
     <br>
     <h3>Current Officers</h3>
@@ -83,4 +75,9 @@
             <td><i class="fa fa-pencil"></i></td>
     </table>
 </div>
->>>>>>> cb75f6e2248090b55c109e4d9cec8d0fdcb24cf1
+
+<!-- Show this message when not logged in -->
+<div ng-controller="AdminCtrl" class="partials container" ng-show="!userId">
+    <p>PLEASE LOG IN FIRST!</p>
+</div>
+
