@@ -121,59 +121,16 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 
 }])
 
-
-//Controller for Index
-.controller('IndexCtrl', ['$scope', '$http', '$firebaseAuth', '$state', function($scope, $http, $firebaseAuth, $state) {
-
-  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
-
-  var Auth = $firebaseAuth(ref);
-
-  $scope.signIn = function() {
-    var promise = Auth.$authWithPassword({
-      'email': $scope.admin.email,
-      'password': $scope.admin.password
-    });
-    return promise;
-  }
-
-  //Make LogOut function available to views
-  $scope.logOut = function() {
-    Auth.$unauth(); //"unauthorize" to log out
-  };
-
-  //Any time auth status updates, set the userId so we know
-  Auth.$onAuth(function(authData) {
-    if(authData) { //if we are authorized
-      $scope.userId = authData.uid;
-      console.log('logged in')
-
-      // $scope.changeState = function () {
-      //   $state.go('admin');
-      // };
-
-    } else {
-      $scope.userId = undefined;
-    }
-  });
-
-  //Test if already logged in (when page load)
-  var authData = Auth.$getAuth(); //get if we're authorized
-  if(authData) {
-    $scope.userId = authData.uid;
-  }
-  
-}])
-
 //Controller for Admin page
-.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject',
-	function($scope, $http, $firebaseArray, $firebaseObject) {
+.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject', '$firebaseAuth',
+	function($scope, $http, $firebaseArray, $firebaseObject, $firebaseAuth) {
 
 	// reference to app
     var ref = new Firebase("http://pkpwebsite.firebaseio.com");
 
-    //reference to a value in the JSON in the Sky
+	var Auth = $firebaseAuth(ref);
 
+    //reference to a value in the JSON in the Sky
     var announceRef = ref.child('announcement');
     var eventsRef = ref.child('event');
     var officerRef = ref.child('officer');
@@ -204,6 +161,36 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
     	}
     	$scope.events.$save();
     }
+
+
+	$scope.signIn = function() {
+	    var promise = Auth.$authWithPassword({
+	      'email': $scope.admin.email,
+	      'password': $scope.admin.password
+	    });
+    	return promise;
+  	}
+
+	//Make LogOut function available to views
+	$scope.logOut = function() {
+		Auth.$unauth(); //"unauthorize" to log out
+	};
+
+  	//Any time auth status updates, set the userId so we know
+  	Auth.$onAuth(function(authData) {
+    	if(authData) { //if we are authorized
+      		$scope.userId = authData.uid;
+      		console.log('logged in')
+    	} else {
+      	$scope.userId = undefined;
+    	}
+  	});
+
+  	//Test if already logged in (when page load)
+  	var authData = Auth.$getAuth(); //get if we're authorized
+  		if(authData) {
+    	$scope.userId = authData.uid;
+  	}
 
 }])
 
