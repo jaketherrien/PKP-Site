@@ -114,6 +114,10 @@ header {
 	height: 50px;
 }
 
+.hide {
+	display: none;
+}
+
 .icon-bar {
 	background-color: rgb(231,166,20);
 }
@@ -176,6 +180,26 @@ nav a {
 	font-weight: bold;
 	margin-top: 3.5em;
 	margin-right: 5em;
+}
+
+.section img{
+	float: left;
+	margin: 1em;
+}
+
+#error {
+	color: red;
+}
+
+.ability {
+	float: right;
+	height: 300px;
+	margin-left: 1em;
+	border-radius: 5px;
+}
+
+.bottom {
+	margin-bottom: 1.5em;
 }
 
 
