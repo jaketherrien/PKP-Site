@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div ng-controller="AdminCtrl" class="partials" ng-show="userId">
+=======
+<div ng-controller="AdminCtrl" class="partials container">
+>>>>>>> cb75f6e2248090b55c109e4d9cec8d0fdcb24cf1
     <h1>Admin Page</h1>
     <br>
 
@@ -15,7 +19,8 @@
             <td>{{announcement.description}}</td>
             <td><i class="fa fa-trash-o" ng-click="announce.$remove(announcement)"></i></td>
     </table>
-
+    <button id="orderButton" type='submit' class="btn btn-primary">Add New Announcement</button>
+    <br>
     <h3>Events</h3>
     <table class="table">
         <tr>
@@ -34,7 +39,8 @@
             <td>{{event.description}}</td>
             <td><i class="fa fa-trash-o" ng-click="events.$remove(event)"></i></td>
     </table>
-
+    <button id="orderButton" type='submit' class="btn btn-primary">Add New Event</button>
+    <br>
     <h3>New Members</h3>
         <table class="table">
         <tr>
@@ -54,7 +60,27 @@
             <td>2015</td>
             <td><i class="fa fa-trash-o"></i></td>
     </table>
+<<<<<<< HEAD
 </div>
 
 
 
+=======
+    <button id="orderButton" type='submit' class="btn btn-primary">Clear all New Members</button>
+    <br>
+    <h3>Current Officers</h3>
+        <table class="table">
+        <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>
+        </tr>
+        <tr> 
+            <td>President</td>
+            <td>Michael Adams</td>
+            <td>Senior</td>
+            <td><i class="fa fa-pencil"></i></td>
+    </table>
+</div>
+>>>>>>> cb75f6e2248090b55c109e4d9cec8d0fdcb24cf1
