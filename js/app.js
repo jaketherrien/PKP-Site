@@ -48,12 +48,26 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 
 	// For any unmatched url, redirect to "home"
 	$urlRouterProvider.otherwise('/');
-
 })
 
+
 //Controller for Home page
-.controller('HomeCtrl', ['$scope','$http','$uibModal', function($scope, $http, $uibModal) {
- 	$scope.eventDetail = function() {
+.controller('HomeCtrl', ['$scope','$http','$uibModal','$firebaseArray', '$firebaseObject', 
+		function($scope, $http, $uibModal,$firebaseArray, $firebaseObject) {
+
+	// reference to app
+    var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+
+    //reference to a value in the JSON in the Sky
+    var announceRef = ref.child('announcement');
+    var eventsRef = ref.child('event');
+
+    $scope.announce = $firebaseArray(announceRef);
+    $scope.events = $firebaseArray(eventsRef);
+    $scope.eventIndex = ""
+
+ 	$scope.eventDetail = function(index) {
+ 			$scope.eventIndex = index
 			//show modal!
 			var modalInstance = $uibModal.open({
 			   templateUrl: 'partials/event-detail-modal.html',
@@ -63,7 +77,12 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
  	}
 }])
 
-.controller('EventModalCtrl',['$scope','$http','$uibModalInstance', function($scope, $http, $uibModalInstance) {
+.controller('EventModalCtrl',['$scope','$http','$uibModalInstance','$firebaseArray', '$firebaseObject',
+	function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
+  
+  // Selected event	
+  $scope.event = $scope.events[$scope.eventIndex];
+
   //when hit cancel, close
   $scope.cancel = function () {
      $uibModalInstance.dismiss('cancel');
@@ -77,7 +96,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 
 //Controller for Recruit page
 .controller('RecruitCtrl', ['$scope', '$http', function($scope, $http) {
-
 
 	// Create a new instance of the Mandrill class from the mandrill
 	// library. It takes one parameter, the API key
@@ -121,48 +139,61 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 
 }])
 
+.controller('IndexCtrl', ['$scope','$state','$http','$uibModal', function($scope, $state, $http, $uibModal) {
+	$scope.$state = $state;
+	$scope.loginModal = function() {
+		//show modal!
+		var modalInstance = $uibModal.open({
+		   templateUrl: 'partials/log-in-modal.html',
+		   controller: 'LoginModalCtrl',
+		   scope: $scope //pass in all our scope variables!
+		});
+	}
+
+}])
 
 //Controller for Index
-.controller('IndexCtrl', ['$scope', '$http', '$firebaseAuth', '$state', function($scope, $http, $firebaseAuth, $state) {
+.controller('LoginModalCtrl', ['$scope', '$http', '$firebaseAuth', '$uibModalInstance', 
+	function($scope, $http, $firebaseAuth, $uibModalInstance) {
 
-  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+	var ref = new Firebase("http://pkpwebsite.firebaseio.com");
 
-  var Auth = $firebaseAuth(ref);
+	var Auth = $firebaseAuth(ref);
 
-  $scope.signIn = function() {
-    var promise = Auth.$authWithPassword({
-      'email': $scope.admin.email,
-      'password': $scope.admin.password
-    });
-    return promise;
-  }
+	$scope.signIn = function() {
+		var promise = Auth.$authWithPassword({
+		  'email': $scope.admin.email,
+		  'password': $scope.admin.password
+		});
+		return promise;
+	}
 
-  //Make LogOut function available to views
-  $scope.logOut = function() {
-    Auth.$unauth(); //"unauthorize" to log out
-  };
+	//Make LogOut function available to views
+	$scope.logOut = function() {
+		Auth.$unauth(); //"unauthorize" to log out
+	};
 
-  //Any time auth status updates, set the userId so we know
-  Auth.$onAuth(function(authData) {
-    if(authData) { //if we are authorized
-      $scope.userId = authData.uid;
-      console.log('logged in')
+	//Any time auth status updates, set the userId so we know
+	Auth.$onAuth(function(authData) {
+	if(authData) { //if we are authorized
+	  $scope.userId = authData.uid;
+	  console.log('logged in')
 
-      // $scope.changeState = function () {
-      //   $state.go('admin');
-      // };
+	} else {
+	  $scope.userId = undefined;
+	}
+	});
 
-    } else {
-      $scope.userId = undefined;
-    }
-  });
-
-  //Test if already logged in (when page load)
-  var authData = Auth.$getAuth(); //get if we're authorized
-  if(authData) {
-    $scope.userId = authData.uid;
-  }
+	//Test if already logged in (when page load)
+	var authData = Auth.$getAuth(); //get if we're authorized
+	if(authData) {
+		$scope.userId = authData.uid;
+	}
   
+  	//when hit cancel, close
+ 	$scope.cancel = function () {
+     	$uibModalInstance.dismiss('cancel');
+    };  	
 }])
 
 //Controller for Admin page
@@ -206,9 +237,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
     }
 
 }])
-
-
-
 
 
 
