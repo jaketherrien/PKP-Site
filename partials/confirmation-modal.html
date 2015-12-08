@@ -1,0 +1,15 @@
+ <div class="modal-body">
+ 	<h2>Delete All New Recruits</h2>
+ 	<form name="confirmDelete" class="form" novalidate>
+		<div class="form-group">
+			<label for="confirm">Type DELETE to delete ALL new recruits</label><br>
+			<input id="confirm" name="title" type="text" ng-model="confirm" required>
+		</div>
+		<!-- Button to clear all members or close out of modal -->
+		<div class="modal-footer">
+			<!-- Disable this when user did not enter DELETE -->
+			<button class="btn btn-primary" type="submit" ng-click="cancel(); removeAll()" ng-disabled="confirmDelete.$invalid">Clear All Recruits</button>
+			<button class="btn btn-primary" type="submit" ng-click="cancel()">Close</button>
+		</div>
+ 	</form>
+</div>

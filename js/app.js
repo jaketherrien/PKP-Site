@@ -63,11 +63,25 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
  	}
 }])
 
-.controller('EventModalCtrl',['$scope','$http','$uibModalInstance', function($scope, $http, $uibModalInstance) {
+.controller('EventModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', function($scope, $http, $uibModalInstance, $firebaseArray) {
   //when hit cancel, close
   $scope.cancel = function () {
      $uibModalInstance.dismiss('cancel');
   };
+
+  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+  var eventRef = ref.child('event');
+  $scope.events = $firebaseArray(eventRef);
+
+  $scope.addEvent = function() {
+		$scope.events.$add({
+			date: $scope.date,
+			title: $scope.title,
+			location: $scope.location,
+			time:$scope.time,
+			description:$scope.description
+		})
+	}
 }])
 
 //Controller for About page
@@ -166,8 +180,8 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 }])
 
 //Controller for Admin page
-.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject',
-	function($scope, $http, $firebaseArray, $firebaseObject) {
+.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject', '$uibModal',
+	function($scope, $http, $firebaseArray, $firebaseObject, $uibModal) {
 
 	// reference to app
     var ref = new Firebase("http://pkpwebsite.firebaseio.com");
@@ -177,34 +191,101 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
     var announceRef = ref.child('announcement');
     var eventsRef = ref.child('event');
     var officerRef = ref.child('officer');
+    var recruitRef = ref.child('recruit');
 
     $scope.announce = $firebaseArray(announceRef);
     $scope.events = $firebaseArray(eventsRef);
     $scope.officers = $firebaseArray(officerRef);
-
-    $scope.newAnnounce = {};
-    $scope.newEvent = {};
-
-    $scope.addAnnounce = function() {
-    	var newAnnounceInfo = {
-        'description': $scope.newAnnounce.description,
-        'date': $scope.newAnnounce.date
-
-        }
-    	$scope.announce.$save();
-    }
+    $scope.newRecruits = $firebaseArray(recruitRef);
 
      $scope.addEvent = function() {
-    	var newEventInfo = {
-        'title': $scope.newEvent.title,
-    		'location': $scope.newEvent.location,
-    		'date': $scope.newEvent.date,
-    		'time': $scope.newEvent.time, 
-    		'description': $scope.newEvent.description
-    	}
-    	$scope.events.$save();
+    	 var modalInstance = $uibModal.open({
+    		templateUrl: 'partials/event-detail-modal.html',
+    		controller: 'EventModalCtrl',
+    		scope: $scope
+    	});
     }
 
+    $scope.addNewAnnounce = function() {
+    	var modalInstance = $uibModal.open({
+    		templateUrl: 'partials/announce-new-modal.html',
+    		controller: 'AnnounceModalCtrl',
+    		scope: $scope
+    	});
+    }	
+
+    $scope.confirmation = function() {
+    	var modalInstance = $uibModal.open({
+    		templateUrl: 'partials/confirmation-modal.html',
+    		controller: 'ConfirmModalCtrl',
+    		scope: $scope
+    	});
+    }	
+    // How to pass the index through to the modal to read?
+    $scope.edit = function(index) {
+      $scope.officerIndex = index;
+    	var modalInstance = $uibModal.open({
+    		templateUrl: 'partials/edit-modal.html',
+    		controller: 'EditModalCtrl',
+    		scope: $scope
+    	});
+    }
+}])
+
+.controller('AnnounceModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
+  //when hit cancel, close
+  $scope.cancel = function () {
+     $uibModalInstance.dismiss('cancel');
+  };
+
+  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+  var announceRef = ref.child('announcement');
+  $scope.announce = $firebaseArray(announceRef);
+
+  $scope.addAnnounce = function() {
+		$scope.announce.$add({
+			description:$scope.description,
+			title: $scope.title,
+			time:Firebase.ServerValue.TIMESTAMP
+		})
+	}
+}])
+
+.controller('ConfirmModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
+  //when hit cancel, close
+  $scope.cancel = function () {
+     $uibModalInstance.dismiss('cancel');
+  };
+
+  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+  var recruitRef = ref.child('recruit');
+
+  $scope.removeAll = function() {
+		recruitRef.remove();
+	}
+}])
+
+.controller('EditModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
+  //when hit cancel, close
+  $scope.cancel = function () {
+     $uibModalInstance.dismiss('cancel');
+  };
+
+  $scope.positions = ['President', 'Vice President', 'Treasurer', 'Secretary', 'Historian', 'Warden', 'Chaplain']
+
+  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+  var officerRef = ref.child('officer');
+  $scope.officers = $firebaseArray.officerRef;
+
+
+  // FIX UP THIS PART OF THE CODE
+  $scope.editOne = function() {
+		$scope.officers($scope.officerIndex).$update({
+			position:$scope.position,
+			name: $scope.name,
+			year:$scope.year
+		})
+	}
 }])
 
 
