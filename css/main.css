@@ -166,6 +166,11 @@ iframe {
 	width: 70px;
 }
 
+#loginReq {
+	margin-top: 1em;
+	font-size: 30px;
+}
+
 #map-container {
 	border:3px solid black;
 	float:left;

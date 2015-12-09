@@ -1,0 +1,27 @@
+ <div class="modal-body">
+ 	<h2>Update Current Officer's Position</h2>
+ 	<form name="editOfficer" class="form" novalidate>
+		<div class="form-group">
+			<label for="position">Position</label><br>
+			<select name="position" id="position" ng-model="position" ng-options="item for item in positions"></select><br> 
+		</div>
+
+
+		<div class="form-group">
+			<label for="name">Name</label><br>
+			<input id="name" name="title" type="text" ng-model="name" placeholder="{{officer.name}}"required>
+		</div>
+
+		<div class="form-group">
+			<label for="year">Year</label><br>
+			<input id="year" name="title" type="text" ng-model="year" placeholder="{{officer.year}}"required>
+		</div>
+
+
+		<!-- Button to clear all members or close out of modal -->
+		<div class="modal-footer">
+			<button class="btn btn-primary" type="submit" ng-click="cancel()" ng-disabled="editOfficer.$invalid">Save Changes</button>
+			<button class="btn btn-warning" type="submit" ng-click="cancel()">Close</button>
+		</div>
+ 	</form>
+</div>

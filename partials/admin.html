@@ -1,43 +1,44 @@
 <!-- Show only when logged in -->
 <div ng-controller="AdminCtrl" class="partials container" ng-show="userId">
-
-    <h1>Admin Page</h1>
+    <h2>Admin Page</h2>
     <br>
 
     <h3>Announcements</h3>
     <table class="table">
         <tr>
             <th>Date</th>
+            <th>Title</th>
             <th>Description</th>
             <th>
         </tr>
         <tr ng-repeat="announcement in announce"> 
             <!-- Change to show only MM/DD -->
-            <td>{{announcement.date}}</td> 
+            <td>{{announcement.time | date: 'shortDate'}}</td> 
+            <td>{{announcement.title}}</td>
             <td>{{announcement.description}}</td>
             <td><i class="fa fa-trash-o" ng-click="announce.$remove(announcement)"></i></td>
     </table>
-    <button id="orderButton" type='submit' class="btn btn-primary">Add New Announcement</button>
+    <button id="orderButton" type='submit' class="btn btn-primary" ng-click="addNewAnnounce()">Add New Announcement</button>
     <br>
     <h3>Events</h3>
     <table class="table">
         <tr>
+            <th>Date</th>
             <th>Title</th>
             <th>Location</th>
-            <th>Date</th>
             <th>Time</th>
             <th>Description</th>
             <th>
         </tr>
         <tr ng-repeat="event in events"> 
+            <td>{{event.date}}</td>
             <td>{{event.title}}</td>
             <td>{{event.location}}</td>
-            <td>{{event.date}}</td>
             <td>{{event.time}}</td>
             <td>{{event.description}}</td>
             <td><i class="fa fa-trash-o" ng-click="events.$remove(event)"></i></td>
     </table>
-    <button id="orderButton" type='submit' class="btn btn-primary">Add New Event</button>
+    <button id="orderButton" type='submit' class="btn btn-primary" ng-click="addEvent()">Add New Event</button>
     <br>
     <h3>New Members</h3>
         <table class="table">
@@ -45,20 +46,16 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>High School</th>
-            <th>High School Graduation Year</th>
             <th>
         </tr>
         <!-- Will use ng-repeat for the Mandrill API call -->
-        <tr> 
-            <td>Peter Adams</td>
-            <td>peter@uw.edu</td>
-            <td>20611111111</td>
-            <td>Alabama High School</td>
-            <td>2015</td>
-            <td><i class="fa fa-trash-o"></i></td>
+        <tr ng-repeat="recruit in newRecruits"> 
+            <td>{{recruit.name}}</td>
+            <td>{{recruit.email}}</td>
+            <td>{{recruit.phonenumber}}</td>
+            <td><i class="fa fa-trash-o" ng-click="events.$remove(event)"></i></td>
     </table>
-    <button id="orderButton" type='submit' class="btn btn-primary">Clear all New Members</button>
+    <button id="orderButton" type='submit' class="btn btn-primary" ng-click="confirmation()">Clear all New Members</button>
     <br>
     <h3>Current Officers</h3>
         <table class="table">
@@ -68,16 +65,16 @@
             <th>Year</th>
             <th>
         </tr>
-        <tr> 
-            <td>President</td>
-            <td>Michael Adams</td>
-            <td>Senior</td>
-            <td><i class="fa fa-pencil"></i></td>
+        <tr ng-repeat="officer in officers"> 
+            <td>{{officer.position}}</td>
+            <td>{{officer.name}}</td>
+            <td>{{officer.year}}</td>
+            <td><i class="fa fa-pencil" ng-click="edit($index)"></i></td>
     </table>
 </div>
 
 <!-- Show this message when not logged in -->
 <div ng-controller="AdminCtrl" class="partials container" ng-show="!userId">
-    <p>PLEASE LOG IN FIRST!</p>
+    <h2 id="loginReq">PLEASE LOG IN FIRST!</h2>
 </div>
 

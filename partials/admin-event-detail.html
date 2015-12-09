@@ -1,0 +1,51 @@
+ <div class="modal-body">
+ 	<h2>Creating New Event</h2>
+ 	<form name="eventForm" class="form" novalidate>
+		<div class="form-group">
+			<label for="event">Event Title</label><br>
+			<input id="title" name="title" type="text" ng-model="title" required>
+
+			<!-- If the user enters blank, show error message -->
+            <span id="error" class="help-block" ng-model="msgBlankEmail" ng-show="eventForm.title.$touched && eventForm.title.$error.required"> Please Enter a Title </span>
+		</div>	
+
+		<div class="form-group">
+			<label for="date">Event Date</label><br>
+			<input id="date" ng-model="date" type="text" name="date" placeholder="MM/DD/YYYY" required></input><br>
+
+			<!-- If the user enters blank, show error message -->
+			<span id="error" class="help-block" ng-model="description" ng-show="eventForm.date.$touched && eventForm.date.$error.required"> Please Enter a Date </span>
+		</div>		
+
+		<!-- Location -->
+		<div class="form-group">
+			<label for="location">Event Location</label><br>
+			<input id="location" name="location" type="text" ng-model="location" required>
+
+			<!-- If the user enters blank, show error message -->
+            <span id="error" class="help-block" ng-model="msgBlankEmail" ng-show="eventForm.location.$touched && eventForm.location.$error.required"> Please Enter a Location </span>
+		</div>	
+
+		<!-- Time -->
+		<div class="form-group">
+			<label for="time">Event Time</label><br>
+			<input id="time" name="time" type="text" ng-model="time" required>
+
+			<!-- If the user enters blank, show error message -->
+            <span id="error" class="help-block" ng-model="msgBlankEmail" ng-show="eventForm.title.$touched && eventForm.title.$error.required"> Please Enter a Title </span>
+		</div>	
+
+		<div class="form-group">
+			<label for="description">Event Description</label><br>
+			<textarea ng-model="description" name="description" cols="40" rows="5" required></textarea><br>
+
+			<!-- If the user enters blank, show error message -->
+			<span id="error" class="help-block" ng-model="description" ng-show="addNewAnnounce.description.$touched && addNewAnnounce.description.$error.required"> Please Enter a Description </span>
+		</div>
+		<!-- Button to save announcement -->
+		<div class="modal-footer">
+			<button class="btn btn-primary" type="submit" ng-click="cancel(); addEvent()" ng-disabled="addNewAnnounce.$invalid">Post Event</button>
+			<button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+		</div>
+ 	</form>
+</div>

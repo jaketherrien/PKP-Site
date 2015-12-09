@@ -82,7 +82,7 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" class="form-control" ng-model="admin.email">
                 <!-- Show an error message if the email is not valid -->    
-                <p class="help-block" ng-if="signinForm.email.$error.email">Not an email!</p>
+                <p class="help-block error" ng-if="signinForm.email.$error.email">Not an email!</p>
             </div>
 
             <!-- Bind model "password" to this input -->
@@ -94,9 +94,14 @@
             <!-- Submit buttons -->
             <div class="form-group">
                 <a ng-controller="IndexCtrl" data-toggle="collapse" href="{{$state.current.name}}/#loginField">
-                    <button ng-show="!userId"type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button>
+                    <button ng-show="!userId" type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button>
                 </a>
-                <button type="submit" class="btn btn-warning"  ng-show="userId" ng-click="logOut()"><i class="fa fa-sign-out"></i>Sign-Out</button>
+                <a ui-sref="admin">
+                    <button class="btn btn-warning" ng-show="userId"><i class="fa fa-pencil-square-o"></i>Edit</button>
+                </a>
+                <a data-toggle="collapse" href="#loginField">
+                    <button type="submit" class="btn btn-warning"  ng-show="userId" ng-click="logOut()"><i class="fa fa-sign-out"></i>Sign-Out</button>
+                </a>
             </div>
             </form>
         </div>
