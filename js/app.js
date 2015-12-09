@@ -167,8 +167,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 .controller('IndexCtrl', ['$scope','$state','$http','$uibModal', '$firebaseAuth', 
 	function($scope, $state, $http, $uibModal, $firebaseAuth) {
 
-	$scope.isLogin = false;
-
 	// Current router state
 	$scope.$state = $state;
 
@@ -194,59 +192,17 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 		window.alert(user+" has logged out");
 	};
 
-	  	//Any time auth status updates, set the userId so we know
+	//Any time auth status updates, set the userId so we know
   	Auth.$onAuth(function(authData) {
     	if(authData) { //if we are authorized
       		$scope.userId = authData.uid;
       		console.log('logged in')
-      		$scope.isLogin = true;
     	} else {
       		$scope.userId = undefined;
-      		$scope.isLogin = false;
     	}
   	});
 
 }])
-
-// //Controller for Index
-// .controller('LoginModalCtrl', ['$scope', '$http', '$firebaseAuth', '$uibModalInstance', 
-// 	function($scope, $http, $firebaseAuth, $uibModalInstance) {
-
-// 	var ref = new Firebase("http://pkpwebsite.firebaseio.com");
-
-// 	var Auth = $firebaseAuth(ref);
-
-// 	$scope.signIn = function() {
-// 	    var promise = Auth.$authWithPassword({
-// 	      'email': $scope.admin.email,
-// 	      'password': $scope.admin.password
-// 	    });
-//     	return promise;
-//   	}
-
-// 	//Any time auth status updates, set the userId so we know
-// 	Auth.$onAuth(function(authData) {
-// 	if(authData) { //if we are authorized
-// 	  $scope.userId = authData.uid;
-// 	  console.log('logged in')
-
-// 	} else {
-// 	  $scope.userId = undefined;
-// 	}
-// 	});
-
-// 	//Test if already logged in (when page load)
-// 	var authData = Auth.$getAuth(); //get if we're authorized
-// 	if(authData) {
-// 		$scope.userId = authData.uid;
-// 	}
-  
-//   	//when hit cancel, close
-//  	$scope.cancel = function () {
-//      	$uibModalInstance.dismiss('cancel');
-//     };  	
-// }])
-
 
 
 //Controller for Admin page
@@ -378,10 +334,12 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 
   // FIX UP THIS PART OF THE CODE
   $scope.editOne = function() {
-		$scope.officers($scope.officerIndex).$update({
-			position:$scope.position,
-			name: $scope.name,
-			year:$scope.year
-		})
+		$scope.editOne = function() {
+			$scope.officers($scope.officerIndex).$update({
+				position:$scope.position,
+				name: $scope.name,
+				year:$scope.year
+			})
+		}
 	}
 }])

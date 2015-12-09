@@ -49,6 +49,16 @@ body {
 	height: 100%;
 }
 
+#aboutAbility {
+	width: 300px;
+}
+
+#aboutOfficer {
+	padding: 1em;
+	width: 350px;
+	margin-bottom: 1em;
+}
+
 #adminInBtn {
 	float: right;
 	margin-top: 1em;
@@ -120,6 +130,10 @@ body {
 	color: rgb(0,85,150);
 }
 
+#eventColumn {
+	margin-bottom: 2em;
+}
+
 #eventColumn, .eventDescript {
 	padding: 15px;
 }
@@ -132,6 +146,10 @@ body {
 	color: rgb(231,166,20);
 	font-variant: small-caps;
 	font-weight: bold;
+}
+
+#footer button {
+	margin-top: 0.5em;
 }
 
 #footer i {
@@ -169,14 +187,6 @@ iframe {
 #loginReq {
 	margin-top: 1em;
 	font-size: 30px;
-}
-
-#map-container {
-	border:3px solid black;
-	float:left;
-	height:500px;
-	margin:1.5em;
-	width:60%;
 }
 
 .navbar-right {
@@ -220,6 +230,17 @@ nav a {
 	max-width: 100%;
 	height: 300px;
 	border-radius: 5px;
+	margin-bottom: 1em;
+}
+
+#recruitBox {
+	margin: 1em;
+	padding: 1em;
+	width: 80%;
+}
+
+#recruitBox input{
+	width: 100%;
 }
 
 #slogan {
@@ -241,15 +262,24 @@ nav a {
 
 
 @media screen and (min-width:768px) {
+	#aboutAbility {
+		margin-left: 10%;
+		width: 500px;
+	}
+
 	#eventBox {
 		float: left;
-		min-height: 500px;
 	}
+
 	.pictures {
 		float: right;
 		height: 300px;
 		margin-left: 1em;
 		border-radius: 5px;
+	}
+	
+	#recruitBox input{
+		width: 100%;
 	}
 }
 

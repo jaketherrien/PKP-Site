@@ -1,8 +1,5 @@
-<div id="about" ng-controller="AdminCtrl">
-
-<div class="container partials">
-	
-	<div class="container">
+<div ng-controller="AdminCtrl" class="container partials">
+	<div class="container col-md-12">
 		<h2>History</h2>
 		<img class="pictures" src="img/history.png" alt="history pic for pi kappa phi"/>
 		<div id="aboutBox">
@@ -10,15 +7,16 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<h2>Current Officers</h2>
+	<h2>Current Officers</h2>
+
+	<div id="aboutOfficer" class="box col-md-6">
 		<ul class="list-unstyled">
-	    	<li ng-repeat="officer in officers" id="container-box">
-	    		<p><b>{{officer.position}}</b> {{officer.name}} <i>{{officer.year}}</i></p>
+	    	<li ng-repeat="officer in officers">
+	    		<p><b>{{officer.position}}</b><br>
+	    		{{officer.name}} (<i>{{officer.year}}</i>)</p>
 	    	</li>
 	  	</ul>
-	</div>
-
-</div>	
+	</div>	
+	<img id="aboutAbility" class="col-md-6" src="img/AbilityExp-logo.png" alt="history pic for pi kappa phi"/>
 
 </div>

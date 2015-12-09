@@ -1,6 +1,4 @@
-
 <div class="container partials">
-
 	<div id="eventBox box" class="container col-sm-3">
 		<h2>Upcoming Events</h2>
 		<div id="eventColumn" class= "box">
@@ -18,22 +16,18 @@
 	    <div ng-repeat="announcement in announce" class="panel panel-default">
 	      <div class="panel-heading">
 	        <h4 class="panel-title">
-	          <a data-toggle="collapse" href="#{{$index}}"><i class="fa fa-caret-right"></i>{{announcement.title}}</a>
+	          <a data-toggle="collapse" href="#{{$index}}"><i class="fa fa-caret-right"></i>[{{announcement.time | date: 'shortDate'}}]  {{announcement.title}}</a>
+
 	        </h4>
 	      </div> <!-- panel-heading -->
 	      <div ng-attr-id="{{$index}}" class="panel-collapse collapse">
 	        <div class="panel-body">
-	        	<p>{{announcement.date}}</p>
 				<p>{{announcement.description}}</p>
 	        </div> <!-- panel-body -->
 	      </div> <!-- annouce1 -->
 	  	</div> <!-- panel -->
 	   </div> <!-- panelGroup -->
 	  </div> <!-- Annoucement -->
-
-	<div class="container col-sm-9">
-	  <img src="img/AbilityExp-logo.png"/>
-	</div>
 </div>
 
 
