@@ -76,7 +76,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 }])
 
 //Controller for Recruit page
-.controller('RecruitCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('RecruitCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject', function($scope, $http, $firebaseArray, $firebaseObject) {
 
 
 	// Create a new instance of the Mandrill class from the mandrill
@@ -108,6 +108,21 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 		m.messages.send($scope.content);
 		console.log("email sent successfully!");
 	};
+
+	var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+	var recruitRef = ref.child('recruit');
+	$scope.recruit = $firebaseArray(recruitRef);
+
+	// adds the recruits to a recruit database in firebase
+	$scope.addRecruit = function() {
+		$scope.recruit.$add({
+			name: $scope.name,
+			email: $scope.fromEmail,
+			phonenumber: $scope.phone
+		})
+	};
+
+
 
 }])
 
