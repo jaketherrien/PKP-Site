@@ -20,7 +20,7 @@
 
 
             <!-- Submit buttons -->
-            <button id="adminInBtn" type="submit" class="btn btn-primary" ng-click="signIn()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid">Sign-in</button>
+            <button id="adminInBtn" type="submit" class="btn btn-primary" ng-click="signIn(); goToAdmin(); cancel()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid">Sign-in</button>
         </div>
     </form>
  </div>

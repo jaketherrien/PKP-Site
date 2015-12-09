@@ -1,11 +1,9 @@
 
 <div class="container partials">
-	
-
 
 	<div id="eventBox box" class="container col-sm-3">
 		<h2>Upcoming Events</h2>
-		<div id="eventColumn">
+		<div id="eventColumn" class= "box">
 		<div ng-repeat="event in events" class="events" ng-click="eventDetail($index)">
 			<h4>{{event.title}}</h4>
 			<p>{{event.location}}</p>

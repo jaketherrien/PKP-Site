@@ -71,10 +71,9 @@
 
     <!-- footer -->
     <footer id="footer" class="panel-footer" ng-controller="AdminCtrl">
-<!--         <span> FOR ADMIN : </span>
-        <button class="btn btn-warning" ng-click="loginModal()"><i class="fa fa-sign-in"></i>SIGN-IN</button>
-        <button ng-show="{{isLogin}}" class="btn btn-warning" ng-click="signOut()"><i class="fa fa-sign-out"></i>SIGN-OUT</button> -->
-        <div>
+        <a ng-controller="IndexCtrl" data-toggle="collapse" href="#loginField"><span>Admin Login</span></a>
+   
+        <div id="loginField" class="collapse">
             <form name="signinForm" novalidate>
             <!-- Bind model "email" to this input and make the help-block show up if bad format -->
             <div class="form-group">
@@ -92,8 +91,8 @@
 
             <!-- Submit buttons -->
             <div class="form-group">
-                <button type="submit" class="btn btn-primary" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid">Sign-in</button>
-                <button type="submit" class="btn btn-primary" ng-click="logOut()">Sign-Out</button>
+                <button type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button>
+                 <button type="submit" class="btn btn-warning"  ng-show="userId" ng-click="logOut()"><i class="fa fa-sign-out"></i>Sign-Out</button>
             </div>
             </form>
         </div>

@@ -225,7 +225,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 
 
 //Controller for Admin page
-.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject', '$firebaseAuth','$state' ,
+.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject', '$firebaseAuth','$state', 
 	function($scope, $http, $firebaseArray, $firebaseObject, $firebaseAuth, $state) {
 
 	// reference to app

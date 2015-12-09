@@ -128,7 +128,7 @@ body {
 	background-color: rgb(0,85,150);
 }
 
-#footer span {
+#footer span, #footer label {
 	color: rgb(231,166,20);
 	font-variant: small-caps;
 	font-weight: bold;
