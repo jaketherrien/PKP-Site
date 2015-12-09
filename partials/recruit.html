@@ -1,3 +1,4 @@
+
 <div class="container partials" ng-controller="RecruitCtrl">
 	<h2>Why go greek?</h2>
 	<p>Membership in a Greek letter organization is a lifetime obligation. Choosing the Greek community means working with a group of men and women who can exchange and stand for common goals and ideas and being held to a higher standard than other college students. The Greek experience during the college years is a gateway to many rewards and connections later in life. Membership will be an unwritten bond of friendship no matter what course a young man's life takes.</p>
@@ -18,17 +19,17 @@
 			<input ng-model="name" name="name" required></input><br>
 
 			<!-- If the user enters blank, show error message -->
-			<span id="error" class="help-block" ng-model="msgNoName" ng-show="recruitForm.name.$touched && recruitForm.name.$error.required"> Please enter a name </span>
+			<span class="help-block error" ng-model="msgNoName" ng-show="recruitForm.name.$touched && recruitForm.name.$error.required"> Please enter a name </span>
 		</div>
 		<div class="form-group">
 			<label for="email" type="email">Email Address</label><br>
 			<input novalidate id="email" name="fromEmail" type="email" ng-model="fromEmail" ng-class="{invalid: recruitForm.fromEmail.$error.email || recruitForm.fromEmail.$touched && recruitForm.fromEmail.$error.required, valid:recruitForm.fromEmail.$valid}" required>
 
 			<!-- If the user enters blank, show error message -->
-            <span id="error" class="help-block" ng-model="msgBlankEmail" ng-show="recruitForm.fromEmail.$touched && recruitForm.fromEmail.$error.required"> Please enter your email </span>
+            <span class="help-block error" ng-model="msgBlankEmail" ng-show="recruitForm.fromEmail.$touched && recruitForm.fromEmail.$error.required"> Please enter your email </span>
 
             <!-- If the user enters an invalid email, show error message -->
-			<span id="error" class="help-block" ng-model="msgInvalidEmail" ng-show="recruitForm.fromEmail.$error.email"> This is not a valid email address </span>
+			<span class="help-block error" ng-model="msgInvalidEmail" ng-show="recruitForm.fromEmail.$error.email"> This is not a valid email address </span>
 
 		</div>
 		<div class="form-group">
@@ -36,21 +37,21 @@
 			<input ng-model="phone" name="phone" required></input><br>
 
 			<!-- If the user enters blank, show error message -->
-			<span id="error" class="help-block" ng-model="msgNoPhone" ng-show="recruitForm.phone.$touched && recruitForm.phone.$error.required"> Please enter a phone number </span>
+			<span class="help-block error" ng-model="msgNoPhone" ng-show="recruitForm.phone.$touched && recruitForm.phone.$error.required"> Please enter a phone number </span>
 		</div>
 		<div class="form-group">
 			<label>High School</label><br>
 			<input ng-model="school" name="school" required></input><br>
 
 			<!-- If the user enters blank, show error message -->
-			<span id="error" class="help-block" ng-model="msgNoSchool" ng-show="recruitForm.school.$touched && recruitForm.school.$error.required"> Please enter a high school </span>
+			<span class="help-block error" ng-model="msgNoSchool" ng-show="recruitForm.school.$touched && recruitForm.school.$error.required"> Please enter a high school </span>
 		</div>
 		<div class="form-group">
 			<label>High School Graduation Year</label><br>
 			<input ng-model="gradYear" name="gradYear" required></input><br>
 
 			<!-- If the user enters blank, show error message -->
-			<span id="error" class="help-block" ng-model="msgNoYear" ng-show="recruitForm.gradYear.$touched && recruitForm.gradYear.$error.required"> Please enter a graduation year </span>
+			<span class="help-block error" ng-model="msgNoYear" ng-show="recruitForm.gradYear.$touched && recruitForm.gradYear.$error.required"> Please enter a graduation year </span>
 		</div>
 		<button class="btn btn-primary" ng-click="updateContent()" ng-disabled="recruitForm.$invalid" >Submit</button>
 		<div class="alert alert-success alert-dismissable" ng-show="recruitForm.$submitted">

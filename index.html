@@ -41,7 +41,7 @@
                      <li><a ui-sref="home" ui-sref-active="current">HOME</a></li>
                      <li><a ui-sref="about" ui-sref-active="current">ABOUT</a></li>
                      <li><a ui-sref="recruit" ui-sref-active="current">RECRUIT</a></li>
-                     <li><a ui-sref="gallery" ui-sref-active="current">GALLERY</a></li>
+                     <!-- <li><a ui-sref="gallery" ui-sref-active="current">GALLERY</a></li> -->
                      <li><a ui-sref="philanthropy" ui-sref-active="current">PHILANTHROPY</a></li>
                      <li><a ui-sref="contact" ui-sref-active="current">CONTACT US</a></li>
                 </ul>
@@ -51,17 +51,17 @@
   
     <!-- picture slide -->
     <div ng-class="{'hide':$state.includes('about')||$state.includes('recruit')||$state.includes('philanthropy')||$state.includes('contact')||$state.includes('admin')}">
-    <div class="camera_wrap" id="camera_wrap_1" >
-        <div data-src="/img/img1.jpg"></div>
-        <div data-src="/img/img2.jpg"></div>
-        <div data-src="/img/img3.jpg"></div>
-        <div data-src="/img/img4.jpg"></div>
-        <div data-src="/img/img5.jpg"></div>
-        <div data-src="/img/img6.jpg"></div>
-        <div data-src="/img/img7.jpg"></div>
-        <div data-src="/img/img8.jpg"></div>
-        <div data-src="/img/img9.jpg"></div>
-    </div>
+        <div class="camera_wrap" id="camera_wrap_1" >
+            <div data-src="/img/img1.jpg"></div>
+            <div data-src="/img/img2.jpg"></div>
+            <div data-src="/img/img3.jpg"></div>
+            <div data-src="/img/img4.jpg"></div>
+            <div data-src="/img/img5.jpg"></div>
+            <div data-src="/img/img6.jpg"></div>
+            <div data-src="/img/img7.jpg"></div>
+            <div data-src="/img/img8.jpg"></div>
+            <div data-src="/img/img9.jpg"></div>
+        </div>
     </div>
 
     <!-- Display partials -->
@@ -70,8 +70,33 @@
     </main>
 
     <!-- footer -->
-    <footer id="footer" class="panel-footer">
-        <button class="btn btn-default" ng-click="loginModal()">Sign-in</button>
+    <footer id="footer" class="panel-footer" ng-controller="AdminCtrl">
+<!--         <span> FOR ADMIN : </span>
+        <button class="btn btn-warning" ng-click="loginModal()"><i class="fa fa-sign-in"></i>SIGN-IN</button>
+        <button ng-show="{{isLogin}}" class="btn btn-warning" ng-click="signOut()"><i class="fa fa-sign-out"></i>SIGN-OUT</button> -->
+        <div>
+            <form name="signinForm" novalidate>
+            <!-- Bind model "email" to this input and make the help-block show up if bad format -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" ng-model="admin.email">
+                <!-- Show an error message if the email is not valid -->    
+                <p class="help-block" ng-if="signinForm.email.$error.email">Not an email!</p>
+            </div>
+
+            <!-- Bind model "password" to this input -->
+            <div class="form-group">
+                <label for="pw">Password:</label>
+                <input id="pw" name="password" type="password" class="form-control" required ng-model="admin.password">
+            </div>
+
+            <!-- Submit buttons -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid">Sign-in</button>
+                <button type="submit" class="btn btn-primary" ng-click="logOut()">Sign-Out</button>
+            </div>
+            </form>
+        </div>
     </footer>
     <div class="bar"></div>
 

@@ -1,4 +1,6 @@
-<div ng-controller="AdminCtrl" class="partials">
+<!-- Show only when logged in -->
+<div ng-controller="AdminCtrl" class="partials container" ng-show="userId">
+
     <h1>Admin Page</h1>
     <br>
 
@@ -15,7 +17,8 @@
             <td>{{announcement.description}}</td>
             <td><i class="fa fa-trash-o" ng-click="announce.$remove(announcement)"></i></td>
     </table>
-
+    <button id="orderButton" type='submit' class="btn btn-primary">Add New Announcement</button>
+    <br>
     <h3>Events</h3>
     <table class="table">
         <tr>
@@ -34,7 +37,8 @@
             <td>{{event.description}}</td>
             <td><i class="fa fa-trash-o" ng-click="events.$remove(event)"></i></td>
     </table>
-
+    <button id="orderButton" type='submit' class="btn btn-primary">Add New Event</button>
+    <br>
     <h3>New Members</h3>
         <table class="table">
         <tr>
@@ -54,4 +58,26 @@
             <td>2015</td>
             <td><i class="fa fa-trash-o"></i></td>
     </table>
+    <button id="orderButton" type='submit' class="btn btn-primary">Clear all New Members</button>
+    <br>
+    <h3>Current Officers</h3>
+        <table class="table">
+        <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>
+        </tr>
+        <tr> 
+            <td>President</td>
+            <td>Michael Adams</td>
+            <td>Senior</td>
+            <td><i class="fa fa-pencil"></i></td>
+    </table>
 </div>
+
+<!-- Show this message when not logged in -->
+<div ng-controller="AdminCtrl" class="partials container" ng-show="!userId">
+    <p>PLEASE LOG IN FIRST!</p>
+</div>
+

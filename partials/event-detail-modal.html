@@ -1,10 +1,9 @@
-
 <div class="modal-header">
   <h3 class="modal-title">{{event.title}}</h3>
 </div> 
-<div class="modal-body">
-	<p> Location:{{event.location}}</p>
-	<p> Time:{{event.time}}</p>
+<div class="modal-body eventDescript box">
+	<p class="eventBody"><i class="fa fa-map-marker"></i>&nbsp;
+	<a href="https://www.google.com/maps/place/{{event.location}}">{{event.location}}</a>, {{event.date}}, {{event.time}}</p>
 	<p> {{event.description}}</p>
  </div>
 <div class="modal-footer">
