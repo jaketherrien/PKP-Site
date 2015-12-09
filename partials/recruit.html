@@ -1,7 +1,8 @@
+
 <div class="container partials" ng-controller="RecruitCtrl">
-	<h1>Why go greek?</h1>
+	<h2>Why go greek?</h2>
 	<p>Membership in a Greek letter organization is a lifetime obligation. Choosing the Greek community means working with a group of men and women who can exchange and stand for common goals and ideas and being held to a higher standard than other college students. The Greek experience during the college years is a gateway to many rewards and connections later in life. Membership will be an unwritten bond of friendship no matter what course a young man's life takes.</p>
-	<h1>Why Pi Kappa Phi?</h1>
+	<h2>Why Pi Kappa Phi?</h2>
 	<p>Here at Pi Kappa Phi, we pride ourselves in being the Gentlemen’s fraternity on campus. The men of Pi Kappa Phi are men of CLASS: Character, Leadership, Academics, Service, and Sportsmanship. These five attributes symbolize the values of our fraternity. Our members strive to attain a balance of character, effective leadership skills, academic distinction, volunteering experience, social excellence and athletic prominence, creating a balanced life unparalleled to that of any other chapter. We are consistently strong in grades and have a large diversity of majors amongst our members. Both the current ASUW student body president and the IFC president are members of Pi Kappa Phi and we also have one other member on the IFC executive board. It is the goal of Pi Kappa Phi to be the premier leadership fraternity here on campus, and for our brothers to leave after four years as greater men. We have been at the University of Washington since 1924, and continue to be one of the most active houses in the Greek community.</p>
 	<h2>Academics</h2>
 	<ul style="list-style-type:square">
@@ -18,17 +19,17 @@
 			<input ng-model="name" name="name" required></input><br>
 
 			<!-- If the user enters blank, show error message -->
-			<span id="error" class="help-block" ng-model="msgNoName" ng-show="recruitForm.name.$touched && recruitForm.name.$error.required"> Please enter a name </span>
+			<span class="help-block error" ng-model="msgNoName" ng-show="recruitForm.name.$touched && recruitForm.name.$error.required"> Please enter a name </span>
 		</div>
 		<div class="form-group">
 			<label for="email" type="email">Email Address</label><br>
 			<input novalidate id="email" name="fromEmail" type="email" ng-model="fromEmail" ng-class="{invalid: recruitForm.fromEmail.$error.email || recruitForm.fromEmail.$touched && recruitForm.fromEmail.$error.required, valid:recruitForm.fromEmail.$valid}" required>
 
 			<!-- If the user enters blank, show error message -->
-            <span id="error" class="help-block" ng-model="msgBlankEmail" ng-show="recruitForm.fromEmail.$touched && recruitForm.fromEmail.$error.required"> Please enter your email </span>
+            <span class="help-block error" ng-model="msgBlankEmail" ng-show="recruitForm.fromEmail.$touched && recruitForm.fromEmail.$error.required"> Please enter your email </span>
 
             <!-- If the user enters an invalid email, show error message -->
-			<span id="error" class="help-block" ng-model="msgInvalidEmail" ng-show="recruitForm.fromEmail.$error.email"> This is not a valid email address </span>
+			<span class="help-block error" ng-model="msgInvalidEmail" ng-show="recruitForm.fromEmail.$error.email"> This is not a valid email address </span>
 
 		</div>
 		<div class="form-group">
@@ -36,21 +37,21 @@
 			<input ng-model="phone" name="phone" required></input><br>
 
 			<!-- If the user enters blank, show error message -->
-			<span id="error" class="help-block" ng-model="msgNoPhone" ng-show="recruitForm.phone.$touched && recruitForm.phone.$error.required"> Please enter a phone number </span>
+			<span class="help-block error" ng-model="msgNoPhone" ng-show="recruitForm.phone.$touched && recruitForm.phone.$error.required"> Please enter a phone number </span>
 		</div>
 		<div class="form-group">
 			<label>High School</label><br>
 			<input ng-model="school" name="school" required></input><br>
 
 			<!-- If the user enters blank, show error message -->
-			<span id="error" class="help-block" ng-model="msgNoSchool" ng-show="recruitForm.school.$touched && recruitForm.school.$error.required"> Please enter a high school </span>
+			<span class="help-block error" ng-model="msgNoSchool" ng-show="recruitForm.school.$touched && recruitForm.school.$error.required"> Please enter a high school </span>
 		</div>
 		<div class="form-group">
 			<label>High School Graduation Year</label><br>
 			<input ng-model="gradYear" name="gradYear" required></input><br>
 
 			<!-- If the user enters blank, show error message -->
-			<span id="error" class="help-block" ng-model="msgNoYear" ng-show="recruitForm.gradYear.$touched && recruitForm.gradYear.$error.required"> Please enter a graduation year </span>
+			<span class="help-block error" ng-model="msgNoYear" ng-show="recruitForm.gradYear.$touched && recruitForm.gradYear.$error.required"> Please enter a graduation year </span>
 		</div>
 		<button class="btn btn-primary" ng-click="updateContent(); addRecruit()" ng-disabled="recruitForm.$invalid" >Submit</button>
 		<div class="alert alert-success alert-dismissable" ng-show="recruitForm.$submitted">
