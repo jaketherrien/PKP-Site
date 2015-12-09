@@ -71,7 +71,9 @@
 
     <!-- footer -->
     <footer id="footer" class="panel-footer" ng-controller="AdminCtrl">
-        <a ng-controller="IndexCtrl" data-toggle="collapse" href="#loginField"><span>Admin Login</span></a>
+        <a ng-controller="IndexCtrl" data-toggle="collapse" href="{{$state.current.name}}/#loginField">
+            <span>Admin Login</span>
+        </a>
    
         <div id="loginField" class="collapse">
             <form name="signinForm" novalidate>
@@ -91,8 +93,8 @@
 
             <!-- Submit buttons -->
             <div class="form-group">
-                <button type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button>
-                 <button type="submit" class="btn btn-warning"  ng-show="userId" ng-click="logOut()"><i class="fa fa-sign-out"></i>Sign-Out</button>
+                <a ng-controller="IndexCtrl" data-toggle="collapse" href="{{$state.current.name}}/#loginField"><button type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button></a>
+                <button type="submit" class="btn btn-warning"  ng-show="userId" ng-click="logOut()"><i class="fa fa-sign-out"></i>Sign-Out</button>
             </div>
             </form>
         </div>
