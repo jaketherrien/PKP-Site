@@ -53,7 +53,7 @@
 			<!-- If the user enters blank, show error message -->
 			<span class="help-block error" ng-model="msgNoYear" ng-show="recruitForm.gradYear.$touched && recruitForm.gradYear.$error.required"> Please enter a graduation year </span>
 		</div>
-		<button class="btn btn-primary" ng-click="updateContent()" ng-disabled="recruitForm.$invalid" >Submit</button>
+		<button class="btn btn-primary" ng-click="updateContent(); addRecruit()" ng-disabled="recruitForm.$invalid" >Submit</button>
 		<div class="alert alert-success alert-dismissable" ng-show="recruitForm.$submitted">
             <strong>Thank you, one of our recruitment chairmen will be in contact with you soon!</strong>
         </div>
