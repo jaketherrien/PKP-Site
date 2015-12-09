@@ -20,5 +20,4 @@ $(document).ready(function(){
 		});
 	});
 	$('#camera_wrap_1').css('margin-top',"8px");
-
 });

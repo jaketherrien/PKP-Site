@@ -48,7 +48,7 @@
     </header>
   
     <!-- picture slide -->
-    <div ng-class="{'hide':$state.includes('about')||$state.includes('recruit')||$state.includes('philanthropy')||$state.includes('contact')||$state.includes('admin')}">
+    <div ng-class="{'hide': $state.includes('recruit')||$state.includes('philanthropy')||$state.includes('contact')||$state.includes('admin')}">
         <div class="camera_wrap" id="camera_wrap_1" >
             <div data-src="img/img1.jpg"></div>
             <div data-src="img/img2.jpg"></div>
@@ -94,7 +94,7 @@
                 <a ng-controller="IndexCtrl" data-toggle="collapse" href="{{$state.current.name}}/#loginField">
                     <button ng-show="!userId" type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button>
                 </a>
-                <a ui-sref="admin">
+                 <a ui-sref="admin">
                     <button class="btn btn-warning" ng-show="userId"><i class="fa fa-pencil-square-o"></i>Edit</button>
                 </a>
                 <a data-toggle="collapse" href="#loginField">

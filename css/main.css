@@ -58,7 +58,6 @@ body {
 
 #aboutOfficer {
 	padding: 1em;
-	width: 250px;
 	margin-bottom: 1em;
 }
 
@@ -191,6 +190,10 @@ header {
 	display: none;
 }
 
+#history {
+	margin-bottom: 3em;
+}
+
 .icon-bar {
 	background-color: rgb(231,166,20);
 }
@@ -265,8 +268,13 @@ nav a {
 	margin-bottom: 1em;
 }
 
+#philan {
+	padding-bottom: 3em;
+}
+
 #recruitBox {
 	margin: 1em;
+	margin-bottom: 3em;
 	padding: 1em;
 	width: 80%;
 }
@@ -310,6 +318,10 @@ nav a {
 		float: left;
 	}
 
+	#history {
+		margin-bottom: 0px;
+	}
+
 	.pictures {
 		float: right;
 		height: 300px;
@@ -319,6 +331,7 @@ nav a {
 	
 	#recruitBox input{
 		width: 100%;
+		margin-bottom: 0px;
 	}
 }
 
