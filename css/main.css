@@ -7,6 +7,7 @@ body {
 
 }
 
+/*Partial div fade in when it loads*/
 .partials {
 	-webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 1s; /* Firefox < 16 */
@@ -44,10 +45,13 @@ body {
     to   { opacity: 1; }
 }
 
-#bomImg {
-	float: left;
-	margin-right: 1em;
-	width: 150px;
+#aboutBox {
+	height: 100%;
+}
+
+#adminInBtn {
+	float: right;
+	margin-top: 1em;
 }
 
 .bar {
@@ -56,20 +60,28 @@ body {
 	height: 7px;
 }
 
+.bottom {
+	margin-bottom: 1.5em;
+}
+
+.box {
+	border-radius: 5px;
+	background-color: aliceblue;
+	border: 1px solid #ddd;
+}
+
 #contactAddress{
 	margin-top: 1em;
 	margin-left: 8px;
 }
 
 .contactBox {
-	border-radius: 5px;
-	background-color: aliceblue;
-	border: 1px solid #ddd;
 	float: left;
 	padding-left: 1em;
 	padding-right: 1em;
 	padding-bottom: 1em;
 	margin-top: 1em;
+	margin-right: 1em;
 	margin-bottom: 1em;
 	width: 250px;
 }
@@ -91,19 +103,39 @@ body {
 	height: 100px;
 }
 
+.error {
+	color: red;
+}
+
 .events {
-	border-radius: 5px;
-	background-color: aliceblue;
-	border: 1px solid #ddd;
-	padding: 15px;
+	margin-bottom: 1em;
 }
 
 .events p {
 	color: gray;
+	font-size: 12px;
+}
+
+.eventBody {
+	color: rgb(0,85,150);
+}
+
+#eventColumn, .eventDescript {
+	padding: 15px;
 }
 
 #footer {
 	background-color: rgb(0,85,150);
+}
+
+#footer span, #footer label {
+	color: rgb(231,166,20);
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+#footer i {
+	margin-right: 5px;
 }
 
 h2, h3 {
@@ -122,6 +154,7 @@ header {
 	background-color: rgb(231,166,20);
 }
 
+/*For embeded Gooogle Map*/
 iframe {
 	margin-bottom: 3em;	
 }
@@ -174,6 +207,16 @@ nav a {
 	background-color: aliceblue;	
 }
 
+.panel i {
+	margin-right: 1em;
+}
+
+.pictures {
+	max-width: 100%;
+	height: 300px;
+	border-radius: 5px;
+}
+
 #slogan {
 	color: rgb(231,166,20);
 	text-align: right;
@@ -187,19 +230,8 @@ nav a {
 	margin: 1em;
 }
 
-#error {
-	color: red;
-}
-
-.ability {
-	float: right;
-	height: 300px;
-	margin-left: 1em;
-	border-radius: 5px;
-}
-
-.bottom {
-	margin-bottom: 1.5em;
+#signinForm input{
+	width: 60%;
 }
 
 
@@ -207,6 +239,12 @@ nav a {
 	#eventBox {
 		float: left;
 		min-height: 500px;
+	}
+	.pictures {
+		float: right;
+		height: 300px;
+		margin-left: 1em;
+		border-radius: 5px;
 	}
 }
 

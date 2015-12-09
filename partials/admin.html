@@ -1,4 +1,5 @@
-<div ng-controller="AdminCtrl" class="partials container">
+<!-- Show only when logged in -->
+<div ng-controller="AdminCtrl" class="partials container" ng-show="userId">
     <h2>Admin Page</h2>
     <br>
 
@@ -71,3 +72,9 @@
             <td><i class="fa fa-pencil" ng-click="edit($index)"></i></td>
     </table>
 </div>
+
+<!-- Show this message when not logged in -->
+<div ng-controller="AdminCtrl" class="partials container" ng-show="!userId">
+    <p>PLEASE LOG IN FIRST!</p>
+</div>
+

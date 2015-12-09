@@ -48,12 +48,26 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 
 	// For any unmatched url, redirect to "home"
 	$urlRouterProvider.otherwise('/');
-
 })
 
+
 //Controller for Home page
-.controller('HomeCtrl', ['$scope','$http','$uibModal', function($scope, $http, $uibModal) {
- 	$scope.eventDetail = function() {
+.controller('HomeCtrl', ['$scope','$http','$uibModal','$firebaseArray', '$firebaseObject', 
+		function($scope, $http, $uibModal,$firebaseArray, $firebaseObject) {
+
+	// reference to app
+    var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+
+    //reference to a value in the JSON in the Sky
+    var announceRef = ref.child('announcement');
+    var eventsRef = ref.child('event');
+
+    $scope.announce = $firebaseArray(announceRef);
+    $scope.events = $firebaseArray(eventsRef);
+    $scope.eventIndex = ""
+
+ 	$scope.eventDetail = function(index) {
+ 			$scope.eventIndex = index
 			//show modal!
 			var modalInstance = $uibModal.open({
 			   templateUrl: 'partials/event-detail-modal.html',
@@ -64,6 +78,10 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 }])
 
 .controller('EventModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', function($scope, $http, $uibModalInstance, $firebaseArray) {
+  
+  // Selected event	
+  $scope.event = $scope.events[$scope.eventIndex];
+
   //when hit cancel, close
   $scope.cancel = function () {
      $uibModalInstance.dismiss('cancel');
@@ -90,8 +108,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 }])
 
 //Controller for Recruit page
-.controller('RecruitCtrl', ['$scope', '$http', function($scope, $http) {
-
+.controller('RecruitCtrl', ['$scope', '$http', '$firebaseArray', function($scope, $http, $firebaseArray) {
 
 	// Create a new instance of the Mandrill class from the mandrill
 	// library. It takes one parameter, the API key
@@ -123,71 +140,124 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 		console.log("email sent successfully!");
 	};
 
+	var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+	var recruitRef = ref.child('recruit');
+	$scope.recruit = $firebaseArray(recruitRef);
+
+	// adds the recruits to a recruit database in firebase
+	$scope.addRecruit = function() {
+		$scope.recruit.$add({
+			name: $scope.name,
+			email: $scope.fromEmail,
+			phonenumber: $scope.phone
+		})
+	};
 }])
 
-//Controller for Gallery page
-.controller('GalleryCtrl', ['$scope', '$http', function($scope, $http) {
+// //Controller for Gallery page
+// .controller('GalleryCtrl', ['$scope', '$http', function($scope, $http) {
 
-}])
+// }])
 
 //Controller for Philanthropy page
 .controller('PhilanthropyCtrl', ['$scope', '$http', function($scope, $http) {
 
 }])
 
+.controller('IndexCtrl', ['$scope','$state','$http','$uibModal', '$firebaseAuth', 
+	function($scope, $state, $http, $uibModal, $firebaseAuth) {
 
-//Controller for Index
-.controller('IndexCtrl', ['$scope', '$http', '$firebaseAuth', '$state', function($scope, $http, $firebaseAuth, $state) {
+	$scope.isLogin = false;
 
-  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
-
-  var Auth = $firebaseAuth(ref);
-
-  $scope.signIn = function() {
-    var promise = Auth.$authWithPassword({
-      'email': $scope.admin.email,
-      'password': $scope.admin.password
-    });
-    return promise;
-  }
-
-  //Make LogOut function available to views
-  $scope.logOut = function() {
-    Auth.$unauth(); //"unauthorize" to log out
-  };
-
-  //Any time auth status updates, set the userId so we know
-  Auth.$onAuth(function(authData) {
-    if(authData) { //if we are authorized
-      $scope.userId = authData.uid;
-      console.log('logged in')
-
-      // $scope.changeState = function () {
-      //   $state.go('admin');
-      // };
-
-    } else {
-      $scope.userId = undefined;
-    }
-  });
-
-  //Test if already logged in (when page load)
-  var authData = Auth.$getAuth(); //get if we're authorized
-  if(authData) {
-    $scope.userId = authData.uid;
-  }
-  
-}])
-
-//Controller for Admin page
-.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseObject', '$uibModal',
-	function($scope, $http, $firebaseArray, $firebaseObject, $uibModal) {
+	// Current router state
+	$scope.$state = $state;
 
 	// reference to app
     var ref = new Firebase("http://pkpwebsite.firebaseio.com");
 
-    //reference to a value in the JSON in the Sky
+	var Auth = $firebaseAuth(ref);
 
+	// Open up log-in modal for Admin
+	$scope.loginModal = function() {
+		//show modal!
+		var modalInstance = $uibModal.open({
+		   templateUrl: 'partials/log-in-modal.html',
+		   controller: 'AdminCtrl',
+		   scope: $scope //pass in all our scope variables!
+		});
+	}
+
+	//Make LogOut function available to views
+	$scope.signOut = function() {
+		var user = Auth.userId;
+		Auth.$unauth(); //"unauthorize" to log out
+		window.alert(user+" has logged out");
+	};
+
+	  	//Any time auth status updates, set the userId so we know
+  	Auth.$onAuth(function(authData) {
+    	if(authData) { //if we are authorized
+      		$scope.userId = authData.uid;
+      		console.log('logged in')
+      		$scope.isLogin = true;
+    	} else {
+      		$scope.userId = undefined;
+      		$scope.isLogin = false;
+    	}
+  	});
+
+}])
+
+// //Controller for Index
+// .controller('LoginModalCtrl', ['$scope', '$http', '$firebaseAuth', '$uibModalInstance', 
+// 	function($scope, $http, $firebaseAuth, $uibModalInstance) {
+
+// 	var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+
+// 	var Auth = $firebaseAuth(ref);
+
+// 	$scope.signIn = function() {
+// 	    var promise = Auth.$authWithPassword({
+// 	      'email': $scope.admin.email,
+// 	      'password': $scope.admin.password
+// 	    });
+//     	return promise;
+//   	}
+
+// 	//Any time auth status updates, set the userId so we know
+// 	Auth.$onAuth(function(authData) {
+// 	if(authData) { //if we are authorized
+// 	  $scope.userId = authData.uid;
+// 	  console.log('logged in')
+
+// 	} else {
+// 	  $scope.userId = undefined;
+// 	}
+// 	});
+
+// 	//Test if already logged in (when page load)
+// 	var authData = Auth.$getAuth(); //get if we're authorized
+// 	if(authData) {
+// 		$scope.userId = authData.uid;
+// 	}
+  
+//   	//when hit cancel, close
+//  	$scope.cancel = function () {
+//      	$uibModalInstance.dismiss('cancel');
+//     };  	
+// }])
+
+
+
+//Controller for Admin page
+.controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseAuth','$state','$uibModal',
+  function($scope, $http, $firebaseArray, $firebaseAuth, $state, $uibModal) {
+
+	// reference to app
+  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+	var Auth = $firebaseAuth(ref);
+
+    //reference to a value in the JSON in the Sky
     var announceRef = ref.child('announcement');
     var eventsRef = ref.child('event');
     var officerRef = ref.child('officer');
@@ -200,7 +270,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 
      $scope.addEvent = function() {
     	 var modalInstance = $uibModal.open({
-    		templateUrl: 'partials/event-detail-modal.html',
+    		templateUrl: 'partials/admin-event-detail.html',
     		controller: 'EventModalCtrl',
     		scope: $scope
     	});
@@ -286,12 +356,37 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 			year:$scope.year
 		})
 	}
+
+	$scope.signIn = function() {
+	    var promise = Auth.$authWithPassword({
+	      'email': $scope.admin.email,
+	      'password': $scope.admin.password
+	    });
+    	return promise;
+  	}
+
+  	$scope.goToAdmin = function() {
+  		$state.go('admin');
+  	}
+
+	//Make LogOut function available to views
+	$scope.logOut = function() {
+		Auth.$unauth(); //"unauthorize" to log out
+	};
+
+  	//Any time auth status updates, set the userId so we know
+  	Auth.$onAuth(function(authData) {
+    	if(authData) { //if we are authorized
+      		$scope.userId = authData.uid;
+      		console.log('logged in')
+    	} else {
+      	$scope.userId = undefined;
+    	}
+  	});
+
+  	//Test if already logged in (when page load)
+  	var authData = Auth.$getAuth(); //get if we're authorized
+  		if(authData) {
+    	 $scope.userId = authData.uid;
+      }
 }])
-
-
-
-
-
-
-
-
