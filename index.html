@@ -78,7 +78,7 @@
         <div id="loginField" class="collapse">
             <form name="signinForm" novalidate>
             <!-- Bind model "email" to this input and make the help-block show up if bad format -->
-            <div class="form-group">
+            <div ng-show="!userId" class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" class="form-control" ng-model="admin.email">
                 <!-- Show an error message if the email is not valid -->    
@@ -86,14 +86,16 @@
             </div>
 
             <!-- Bind model "password" to this input -->
-            <div class="form-group">
+            <div ng-show="!userId" class="form-group">
                 <label for="pw">Password:</label>
                 <input id="pw" name="password" type="password" class="form-control" required ng-model="admin.password">
             </div>
 
             <!-- Submit buttons -->
             <div class="form-group">
-                <a ng-controller="IndexCtrl" data-toggle="collapse" href="{{$state.current.name}}/#loginField"><button type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button></a>
+                <a ng-controller="IndexCtrl" data-toggle="collapse" href="{{$state.current.name}}/#loginField">
+                    <button ng-show="!userId"type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button>
+                </a>
                 <button type="submit" class="btn btn-warning"  ng-show="userId" ng-click="logOut()"><i class="fa fa-sign-out"></i>Sign-Out</button>
             </div>
             </form>
