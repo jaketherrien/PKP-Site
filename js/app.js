@@ -12,12 +12,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 			controller: 'HomeCtrl'
 		})
 
-		.state('about', {
-			url: '/about',
-			templateUrl: 'partials/about.html',
-			controller:'AboutCtrl'
-		})
-
 		.state('recruit', {
 			url: '/recruit',
 			templateUrl: 'partials/recruit.html',
