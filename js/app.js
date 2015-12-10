@@ -21,7 +21,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 		.state('gallery', {
 			url: '/gallery',
 			templateUrl: 'partials/gallery.html',
-			controller: 'GalleryCtrl'
 		})
 
 		.state('philanthropy', {
@@ -94,11 +93,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 			description:$scope.description
 		})
 	}
-}])
-
-//Controller for About page
-.controller('AboutCtrl', ['$scope', '$http', function($scope, $http) {
-
 }])
 
 //Controller for Recruit page
@@ -314,26 +308,27 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 }])
 
 .controller('EditModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
-  //when hit cancel, close
-  $scope.cancel = function () {
-     $uibModalInstance.dismiss('cancel');
-  };
 
-  $scope.positions = ['President', 'Vice President', 'Treasurer', 'Secretary', 'Historian', 'Warden', 'Chaplain']
+	// List of positions
+  	$scope.positions = ['President', 'Vice President', 'Treasurer', 'Secretary', 'Historian', 'Warden', 'Chaplain']
 
-  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
-  var officerRef = ref.child('officer');
-  $scope.officers = $firebaseArray.officerRef;
+	var officer = $scope.officers.$getRecord($scope.officerIndex);
+	$scope.officer = officer;
 
 
-  // FIX UP THIS PART OF THE CODE
-  $scope.editOne = function() {
-		$scope.editOne = function() {
-			$scope.officers($scope.officerIndex).$update({
-				position:$scope.position,
-				name: $scope.name,
-				year:$scope.year
-			})
-		}
+ 	// FIX UP THIS PART OF THE CODE
+ 	$scope.editOne = function() {
+		officer.position = $scope.position;
+		officer.name = $scope.name;
+		officer.year = $scope.year;
+
+		$scope.officers.$save(officer).then(function() {
+			$scope.cancel();
+		});
 	}
+
+	//when hit cancel, close
+	$scope.cancel = function () {
+ 	    $uibModalInstance.dismiss('cancel');
+	};
 }])

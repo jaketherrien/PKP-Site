@@ -178,6 +178,16 @@ body {
 	margin-right: 5px;
 }
 
+#gallery {
+	padding-bottom: 3em;
+}
+
+.galleryPic {
+	border: 2px solid #ddd;
+	max-height: 100px;
+	margin: 0.5em;
+}
+
 h2, h3 {
 	color: rgb(0,85,150);
 }
@@ -307,7 +317,6 @@ nav a {
 		width: 500px;
 	}
 
-
 	.contactBox {
 		float: left;
 		margin-left: 0px;
@@ -316,6 +325,11 @@ nav a {
 
 	#eventBox {
 		float: left;
+	}
+
+	.galleryPic {
+		cursor: pointer;
+		max-height: 150px;
 	}
 
 	#history {
