@@ -1,12 +1,14 @@
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 
+
+body, html{
+	height: 100%;
+}
+
 body { 
 	font-family: Helvetica, sans-serif;
 	font-size: 16px;
-	position: relative;
-	padding-bottom: 0px;
-	height: 100%;
 }
 
 /*Partial div fade in when it loads*/
@@ -100,6 +102,12 @@ body {
 	display: none;
 }
 
+/*div for inner contents*/
+#cont {
+	min-height: 100%;
+	position: relative;
+}
+
 #contactAddress{
 	margin-top: 1em;
 	margin-left: 8px;
@@ -177,15 +185,6 @@ body {
 	position: absolute;
  	bottom: 0px;
  	width: 100%;
-}
-
-body, html{
-	height: 100%;
-}
-
-#cont {
-	min-height: 100%;
-	position: relative;
 }
 
 #footer span, #footer label {
