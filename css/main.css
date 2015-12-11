@@ -214,7 +214,7 @@ nav a {
 	margin: 1em;
 	margin-bottom: 3em;
 	padding: 1em;
-	width: 50%;
+	width: 90%;
 }
 
 #recruitBox input{
@@ -394,8 +394,11 @@ iframe {
 	}
 
 	/* Recruitment Form in Recruit Page*/
+	#recruitBox {
+		width: 50%;
+	}
+
 	#recruitBox input{
-		width: 100%;
 		margin-bottom: 0px;
 	}
 
