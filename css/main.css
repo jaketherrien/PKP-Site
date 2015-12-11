@@ -214,13 +214,12 @@ nav a {
 	margin: 1em;
 	margin-bottom: 3em;
 	padding: 1em;
-	width: 80%;
+	width: 50%;
 }
 
 #recruitBox input{
 	width: 100%;
 }
-
 
 /*Philanthropy Page*/
 #philan {
@@ -344,6 +343,15 @@ iframe {
 
 /* Screens larger than 768px */
 @media screen and (min-width:768px) {
+
+	/*General style of pictures*/
+	.pictures {
+		float: right;
+		height: 300px;
+		margin-left: 1em;
+		border-radius: 5px;
+	}
+
 	/* Ability Experience Logo on Home Page */
 	#aboutAbility {
 		margin-left: 10%;
@@ -376,18 +384,30 @@ iframe {
 		margin-bottom: 0px;
 	}
 
-	.pictures {
-		float: right;
-		height: 300px;
-		margin-left: 1em;
-		border-radius: 5px;
-	}
+
 	
+	/*Picture in Philan Page*/
+	#philanPic2 {
+		width: 100%;
+		height: 500px;
+		margin-bottom: 1em;
+	}
+
 	/* Recruitment Form in Recruit Page*/
 	#recruitBox input{
 		width: 100%;
 		margin-bottom: 0px;
 	}
+
+	#recruitFormPic {
+		background-image: url("../img/brotherhood2.jpg");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		min-width: 500px;
+		min-height: 418px;
+		margin-top: 1em;
+	}
+
 }
 
 @media screen and (min-width:992px) {
@@ -395,5 +415,13 @@ iframe {
 }
 
 @media screen and (min-width:1200px) {
+
+	#philanPic1 {
+		height: 180px;
+	}
+
+	.recruitPic {
+		height: 240px;
+	}
 
 }
