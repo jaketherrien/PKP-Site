@@ -16,9 +16,6 @@
     <!-- Load Camera stylesheets -->
     <link rel='stylesheet' id='camera-css'  href='css/camera.css' type='text/css' media='all'> 
 
-    <!-- Load Lightbox stylesheets -->
-    <link rel="stylesheet" href="css/lightbox.css"/>
-
     <!-- Load main stylesheets -->
     <link rel="stylesheet" href="css/main.css"/>
     
@@ -43,7 +40,6 @@
                 <ul class="nav navbar-nav">
                      <li><a data-toggle="collapse" data-target="#myNavbar" ui-sref="home" ui-sref-active="current">HOME</a></li>
                      <li><a data-toggle="collapse" data-target="#myNavbar"ui-sref="recruit" ui-sref-active="current">RECRUIT</a></li>
-                      <li><a data-toggle="collapse" data-target="#myNavbar"ui-sref="gallery" ui-sref-active="current">GALLERY</a></li>
                      <li><a data-toggle="collapse" data-target="#myNavbar"ui-sref="philanthropy" ui-sref-active="current">PHILANTHROPY</a></li>
                      <li><a data-toggle="collapse" data-target="#myNavbar"ui-sref="contact" ui-sref-active="current">CONTACT US</a></li>
                 </ul>
@@ -65,7 +61,7 @@
             <div data-src="img/img9.jpg"></div>
         </div>
     </div>
-    
+
     <!-- Display partials -->
     <main>
         <div ui-view></div>
@@ -98,7 +94,7 @@
                 <a ng-controller="IndexCtrl" data-toggle="collapse" href="{{$state.current.name}}/#loginField">
                     <button ng-show="!userId" type="submit" class="btn btn-warning" ng-click="signIn(); goToAdmin()" ng-disabled="signinForm.email.$invalid || signinForm.password.$invalid"><i class="fa fa-sign-in"></i>Sign-in</button>
                 </a>
-                 <a ui-sref="admin">
+                 <a data-toggle="collapse" href="/admin/#loginField" ng-click="goToAdmin()">
                     <button class="btn btn-warning" ng-show="userId"><i class="fa fa-pencil-square-o"></i>Edit</button>
                 </a>
                 <a data-toggle="collapse" href="#loginField">
@@ -120,11 +116,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <!-- load scripts for 'Camera' picture slide -->
-    <script src='js/jquery.easing.1.3.js'></script> 
+    <script src='js/jquery.easing.1.3.js'></script>
     <script src='js/camera.min.js'></script> 
-
-    <!-- load Lightbox -->
-    <script src="js/lightbox.js"></script>
 
     <!-- load bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

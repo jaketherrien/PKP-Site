@@ -16,9 +16,10 @@
             <td>{{announcement.title}}</td>
             <td>{{announcement.description}}</td>
             <td class="iconCol"><i class="fa fa-trash-o" ng-click="announce.$remove(announcement)"></i></td>
+        </tr>    
     </table>
-    <button id="orderButton" type='submit' class="btn btn-primary" ng-click="addNewAnnounce()">Add</button>
-    <br>
+    <button type='submit' class="btn btn-primary" ng-click="addNewAnnounce()">Add</button><br>
+
     <h3>Events</h3>
     <table class="table">
         <tr>
@@ -36,9 +37,10 @@
             <td>{{event.time}}</td>
             <td>{{event.description}}</td>
             <td class="iconCol"><i class="fa fa-trash-o" ng-click="events.$remove(event)"></i></td>
+        </tr>    
     </table>
-    <button id="orderButton" type='submit' class="btn btn-primary" ng-click="addEvent()">Add</button>
-    <br>
+    <button type='submit' class="btn btn-primary" ng-click="addEvent()">Add</button><br>
+
     <h3>New Members</h3>
         <table class="table">
         <tr>
@@ -53,9 +55,10 @@
             <td>{{recruit.email}}</td>
             <td>{{recruit.phonenumber}}</td>
             <td class="iconCol"><i class="fa fa-trash-o" ng-click="events.$remove(event)"></i></td>
+        </tr>   
     </table>
-    <button id="orderButton" type='submit' class="btn btn-warning" ng-click="confirmation()">Clear All</button>
-    <br>
+    <button type='submit' class="btn btn-warning" ng-click="confirmation()">Clear All</button><br>
+
     <h3>Current Officers</h3>
         <table class="table">
         <tr>
@@ -69,6 +72,7 @@
             <td>{{officer.name}}</td>
             <td>{{officer.year}}</td>
             <td class="iconCol"><i class="fa fa-pencil" ng-click="edit($index)"></i></td>
+        </tr>    
     </table>
 </div>
 

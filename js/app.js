@@ -2,6 +2,9 @@
 
 'use strict';
 
+// reference to app
+var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+
 angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 .config(function($stateProvider,$urlRouterProvider){
 
@@ -18,15 +21,9 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 			controller: 'RecruitCtrl'
 		})
 
-		.state('gallery', {
-			url: '/gallery',
-			templateUrl: 'partials/gallery.html',
-		})
-
 		.state('philanthropy', {
 			url: '/philanthropy',
-			templateUrl: 'partials/philanthropy.html',
-			controller: 'PhilanthropyCtrl'
+			templateUrl: 'partials/philanthropy.html'
 		})
 
 		.state('contact', {
@@ -47,9 +44,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 //Controller for Home page
 .controller('HomeCtrl', ['$scope','$http','$uibModal','$firebaseArray', '$firebaseObject', 
 		function($scope, $http, $uibModal,$firebaseArray, $firebaseObject) {
-
-	// reference to app
-    var ref = new Firebase("http://pkpwebsite.firebaseio.com");
 
     //reference to a value in the JSON in the Sky
     var announceRef = ref.child('announcement');
@@ -113,7 +107,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 	};
 
 	$scope.updateContent = function() {
-		console.log($scope.fromEmail)
 		$scope.content.message.subject = "Rush Contact: " + $scope.name;
 		$scope.content.message.from_email = $scope.fromEmail;
 		$scope.content.message.text = "New rushee " + $scope.name + " from " + $scope.school + 
@@ -128,7 +121,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 		console.log("email sent successfully!");
 	};
 
-	var ref = new Firebase("http://pkpwebsite.firebaseio.com");
+	// var ref = new Firebase("http://pkpwebsite.firebaseio.com");
 	var recruitRef = ref.child('recruit');
 	$scope.recruit = $firebaseArray(recruitRef);
 
@@ -142,24 +135,11 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 	};
 }])
 
-// //Controller for Gallery page
-// .controller('GalleryCtrl', ['$scope', '$http', function($scope, $http) {
-
-// }])
-
-//Controller for Philanthropy page
-.controller('PhilanthropyCtrl', ['$scope', '$http', function($scope, $http) {
-
-}])
-
 .controller('IndexCtrl', ['$scope','$state','$http','$uibModal', '$firebaseAuth', 
 	function($scope, $state, $http, $uibModal, $firebaseAuth) {
 
 	// Current router state
 	$scope.$state = $state;
-
-	// reference to app
-    var ref = new Firebase("http://pkpwebsite.firebaseio.com");
 
 	var Auth = $firebaseAuth(ref);
 
@@ -184,7 +164,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
   	Auth.$onAuth(function(authData) {
     	if(authData) { //if we are authorized
       		$scope.userId = authData.uid;
-      		console.log('logged in')
     	} else {
       		$scope.userId = undefined;
     	}
@@ -197,8 +176,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 .controller('AdminCtrl', ['$scope', '$http', '$firebaseArray', '$firebaseAuth','$state','$uibModal',
   function($scope, $http, $firebaseArray, $firebaseAuth, $state, $uibModal) {
 
-	// reference to app
-  	var ref = new Firebase("http://pkpwebsite.firebaseio.com");
 	var Auth = $firebaseAuth(ref);
 
     //reference to a value in the JSON in the Sky
@@ -267,11 +244,12 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
   	Auth.$onAuth(function(authData) {
     	if(authData) { //if we are authorized
       		$scope.userId = authData.uid;
-      		console.log('logged in')
     	} else {
       	$scope.userId = undefined;
     	}
   	});
+
+
 }])
 
 .controller('AnnounceModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
@@ -280,7 +258,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
      $uibModalInstance.dismiss('cancel');
   };
 
-  var ref = new Firebase("http://pkpwebsite.firebaseio.com");
   var announceRef = ref.child('announcement');
   $scope.announce = $firebaseArray(announceRef);
 
@@ -293,7 +270,8 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 	}
 }])
 
-.controller('ConfirmModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
+.controller('ConfirmModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', 
+	function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
   //when hit cancel, close
   $scope.cancel = function () {
      $uibModalInstance.dismiss('cancel');
@@ -307,7 +285,8 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 	}
 }])
 
-.controller('EditModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
+.controller('EditModalCtrl',['$scope','$http','$uibModalInstance', '$firebaseArray', '$firebaseObject', 
+	function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
 
 	// List of positions
   	$scope.positions = ['President', 'Vice President', 'Treasurer', 'Secretary', 'Historian', 'Warden', 'Chaplain']
@@ -332,3 +311,6 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
  	    $uibModalInstance.dismiss('cancel');
 	};
 }])
+
+
+

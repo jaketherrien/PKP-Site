@@ -67,6 +67,10 @@ body {
 	margin-bottom: 3em;
 }
 
+#admin input {
+	width: 60%;
+}
+
 #admin h2 {
 	margin-bottom: 0px;
 }
@@ -85,6 +89,14 @@ body {
 	border-radius: 5px;
 	background-color: aliceblue;
 	border: 1px solid #ddd;
+}
+
+#camera_wrap_1 {
+	height: 100px;
+}
+
+.camera_pag_ul {
+	display: none;
 }
 
 #contactAddress{
@@ -116,9 +128,8 @@ body {
 	background-color: rgb(231,166,20);
 }
 
-#camera_wrap_1 {
-	height: 100px;
-}
+
+
 
 .error {
 	color: red;
@@ -145,6 +156,10 @@ body {
 
 .eventBody {
 	color: rgb(0,85,150);
+}
+
+#eventBox {
+	margin-top: 3em;
 }
 
 #eventColumn {
@@ -176,16 +191,6 @@ body {
 
 #footer i {
 	margin-right: 5px;
-}
-
-#gallery {
-	padding-bottom: 3em;
-}
-
-.galleryPic {
-	border: 2px solid #ddd;
-	max-height: 100px;
-	margin: 0.5em;
 }
 
 h2, h3 {
@@ -316,7 +321,9 @@ nav a {
 		margin-left: 10%;
 		width: 500px;
 	}
-
+	.camera_pag_ul {
+		display: block;
+	}	
 	.contactBox {
 		float: left;
 		margin-left: 0px;

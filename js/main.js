@@ -7,11 +7,12 @@ $(document).ready(function(){
 	// 'Camera' picture slide funtions
 	var height = 400;
 
-	//If the screen is small, set the height smaller
+	// If the screen is small, set the height smaller
 	if($(document).width()<768) {
 		height = 200;
 	}
 
+	// Camera options
 	jQuery(function(){
 		jQuery('#camera_wrap_1').camera({
 			alignment: 'center',
