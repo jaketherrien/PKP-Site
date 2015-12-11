@@ -2,6 +2,7 @@
  	<h2>Creating New Event</h2>
  	<form name="eventForm" class="form" novalidate>
 		<div class="form-group">
+			<!-- Title -->
 			<label for="event">Event Title</label><br>
 			<input id="title" name="title" type="text" ng-model="title" required>
 
@@ -9,6 +10,7 @@
             <span id="error" class="help-block" ng-model="msgBlankEmail" ng-show="eventForm.title.$touched && eventForm.title.$error.required"> Please Enter a Title </span>
 		</div>	
 
+		<!-- Date -->
 		<div class="form-group">
 			<label for="date">Event Date</label><br>
 			<input id="date" ng-model="date" type="text" name="date" placeholder="MM/DD/YYYY" required></input><br>

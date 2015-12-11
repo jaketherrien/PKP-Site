@@ -1,14 +1,17 @@
  <div class="modal-body">
  	<h2>Creating New Announcements</h2>
  	<form name="addNewAnnounce" class="form" novalidate>
+
+ 		<!-- Title -->
 		<div class="form-group">
 			<label for="title">Announcement Title</label><br>
 			<input id="title" name="title" type="text" ng-model="title" required>
 
 			<!-- If the user enters blank, show error message -->
             <span id="error" class="help-block" ng-model="msgBlankEmail" ng-show="addNewAnnounce.title.$touched && addNewAnnounce.title.$error.required"> Please Enter a Title </span>
-
 		</div>
+
+		<!-- Description -->
 		<div class="form-group">
 			<label>Announcement Description</label><br>
 			<textarea ng-model="description" name="description" cols="40" rows="5" required></textarea><br>
@@ -16,6 +19,7 @@
 			<!-- If the user enters blank, show error message -->
 			<span id="error" class="help-block" ng-model="description" ng-show="addNewAnnounce.description.$touched && addNewAnnounce.description.$error.required"> Please Enter a Description </span>
 		</div>
+
 		<!-- Button to save announcement -->
 		<div class="modal-footer">
 			<button class="btn btn-primary" type="submit" ng-click="cancel(); addAnnounce()" ng-disabled="addNewAnnounce.$invalid">Post Announcement</button>

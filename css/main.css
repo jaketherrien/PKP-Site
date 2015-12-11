@@ -11,6 +11,10 @@ body {
 	font-size: 16px;
 }
 
+h2, h3 {
+	color: rgb(0,85,150);
+}
+
 /*Partial div fade in when it loads*/
 .partials {
 	-webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
@@ -51,10 +55,95 @@ body {
     to   { opacity: 1; }
 }
 
+/*Upcoming Events, Current Officers and Contact Information Boxes*/
+.box {
+	border-radius: 5px;
+	background-color: aliceblue;
+	border: 1px solid #ddd;
+}
+
+/*Navigation Bar Pi Kappa Phi Logo*/
+#logo {
+	position: fixed;
+	top: -0.5em;
+	margin-left: 1em;
+	width: 70px;
+}
+
+/*Navigation Bar and Footer*/
+header {
+	height: 50px;
+}
+
+.icon-bar {
+	background-color: rgb(231,166,20);
+}
+
+.navbar {
+	background-color: rgb(0,85,150);	
+}
+
+.navbar-right {
+ 	margin-right: 1em;
+}
+
+.navbar-brand { 
+	color: rgb(231,166,20);
+	font-size: 30px;
+	margin-left: 3em;
+}
+
+.navbar-brand:hover { 
+	color: rgb(231,166,20);
+}
+
+.navbar-brand:visited { 
+	color: white;
+}
+
+.current {
+	background-color: rgb(231,166,20);
+}
+
+nav a {
+	color: white;
+	font-size: 14px;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+#footer {
+	background-color: rgb(0,85,150);
+	position: absolute;
+ 	bottom: 0px;
+ 	width: 100%;
+}
+
+#footer span, #footer label {
+	color: rgb(231,166,20);
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+#footer button {
+	margin-top: 0.5em;
+}
+
+#footer i {
+	margin-right: 5px;
+}
+
+.bar {
+	background-color: rgb(231,166,20);
+	width: 100%;
+	height: 7px;
+}
+
+
+/*Home Page*/
 #aboutBox {
 	height: 100%;
 }
-
 #aboutAbility {
 	width: 300px;
 }
@@ -64,84 +153,28 @@ body {
 	margin-bottom: 1em;
 }
 
-#admin button {
-	float: right;
-	margin-right: 1em;
+#history {
 	margin-bottom: 3em;
 }
 
-#admin input {
-	width: 60%;
+.panel-default > .panel-heading {
+	background-color: rgba(240, 248, 255, 0.5);	
 }
 
-#admin h2 {
-	margin-bottom: 0px;
-}
-
-#admin h3 {
-	margin-top: 1em;
-}
-
-.bar {
-	background-color: rgb(231,166,20);
-	width: 100%;
-	height: 7px;
-}
-
-.box {
-	border-radius: 5px;
-	background-color: aliceblue;
-	border: 1px solid #ddd;
-}
-
-#camera_wrap_1 {
-	height: 100px;
-}
-
-.camera_pag_ul {
-	display: none;
-}
-
-/*div for inner contents*/
-#cont {
-	min-height: 100%;
-	position: relative;
-}
-
-#contactAddress{
-	margin-top: 1em;
-	margin-left: 8px;
-}
-
-.contactBox {
-	float: left;
-	padding-left: 1em;
-	padding-right: 1em;
-	padding-bottom: 1em;
-	margin-top: 1em;
+.panel i {
 	margin-right: 1em;
-	margin-bottom: 1em;
-	width: 100%;
-}
-
-.contactBox i {
-	margin-right: 10px;
-}
-
-.contactBox p {
-	margin-top: 5px;
-	margin-bottom: 0px;
-}
-
-.current {
-	background-color: rgb(231,166,20);
 }
 
 
 
+/*Events on the Home Page*/
+#eventColumn {
+	margin-bottom: 2em;
 
-.error {
-	color: red;
+}
+
+#eventBox {
+	margin-top: 3em;
 }
 
 .events {
@@ -167,132 +200,14 @@ body {
 	color: rgb(0,85,150);
 }
 
-#eventBox {
-	margin-top: 3em;
-}
-
-#eventColumn {
-	margin-bottom: 2em;
-
-}
-
 #eventColumn, .eventDescript {
 	padding: 15px;
 }
 
-#footer {
-	background-color: rgb(0,85,150);
-	position: absolute;
- 	bottom: 0px;
- 	width: 100%;
-}
 
-#footer span, #footer label {
-	color: rgb(231,166,20);
-	font-variant: small-caps;
-	font-weight: bold;
-}
-
-#footer button {
-	margin-top: 0.5em;
-}
-
-#footer i {
-	margin-right: 5px;
-}
-
-h2, h3 {
-	color: rgb(0,85,150);
-}
-
-header {
-	height: 50px;
-}
-
-.hide {
-	display: none;
-}
-
-#history {
-	margin-bottom: 3em;
-}
-
-.icon-bar {
-	background-color: rgb(231,166,20);
-}
-
-.iconCol {
-	cursor: pointer;
-	width: 5%;
-}
-
-.iconCol:hover {
-	color: rgb(231,166,20);
-}
-
-/*For embeded Gooogle Map*/
-iframe {
-	margin-bottom: 5em;	
-}
-
-#logo {
-	position: fixed;
-	top: -0.5em;
-	margin-left: 1em;
-	width: 70px;
-}
-
-#loginReq {
-	margin-top: 1em;
-	font-size: 30px;
-}
-
-.navbar-right {
- 	margin-right: 1em;
-}
-
-.navbar {
-	background-color: rgb(0,85,150);	
-}
-
-.navbar-brand { 
-	color: rgb(231,166,20);
-	font-size: 30px;
-	margin-left: 3em;
-}
-
-.navbar-brand:hover { 
-	color: rgb(231,166,20);
-}
-
-.navbar-brand:visited { 
-	color: white;
-}
-
-nav a {
-	color: white;
-	font-size: 14px;
-	font-variant: small-caps;
-	font-weight: bold;
-}
-
-.panel-default>.panel-heading {
-	background-color: rgba(240, 248, 255, 0.5);	
-}
-
-.panel i {
-	margin-right: 1em;
-}
-
-.pictures {
-	max-width: 100%;
-	height: 300px;
-	border-radius: 5px;
-	margin-bottom: 1em;
-}
-
-#philan {
-	padding-bottom: 3em;
+/*Recruitment Page*/
+.error {
+	color: red;
 }
 
 #recruitBox {
@@ -304,6 +219,110 @@ nav a {
 
 #recruitBox input{
 	width: 100%;
+}
+
+
+/*Philanthropy Page*/
+#philan {
+	padding-bottom: 3em;
+}
+
+
+/*Contact Page*/
+.contactBox {
+	float: left;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 1em;
+	margin-top: 1em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	width: 100%;
+}
+
+.contactBox i {
+	margin-right: 10px;
+}
+
+.contactBox p {
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+#contactAddress{
+	margin-top: 1em;
+	margin-left: 8px;
+}
+
+
+/*Admin Page*/
+#admin button {
+	float: right;
+	margin-right: 1em;
+	margin-bottom: 3em;
+}
+
+#admin input {
+	width: 60%;
+}
+
+#admin h2 {
+	margin-bottom: 0px;
+}
+
+#admin h3 {
+	margin-top: 1em;
+}
+
+.iconCol {
+	cursor: pointer;
+	width: 5%;
+}
+
+.iconCol:hover {
+	color: rgb(231,166,20);
+}
+
+
+/*div for inner contents*/
+#cont {
+	min-height: 100%;
+	position: relative;
+}
+
+
+/*For embeded Gooogle Map*/
+iframe {
+	margin-bottom: 5em;	
+}
+
+
+
+
+/*Not sure what these ones are -Michael*/
+#camera_wrap_1 {
+	height: 100px;
+}
+
+.camera_pag_ul {
+	display: none;
+}
+
+.hide {
+	display: none;
+}
+
+
+#loginReq {
+	margin-top: 1em;
+	font-size: 30px;
+}
+
+.pictures {
+	max-width: 100%;
+	height: 300px;
+	border-radius: 5px;
+	margin-bottom: 1em;
 }
 
 #slogan {
@@ -323,21 +342,26 @@ nav a {
 	width: 60%;
 }
 
-
+/* Screens larger than 768px */
 @media screen and (min-width:768px) {
+	/* Ability Experience Logo on Home Page */
 	#aboutAbility {
 		margin-left: 10%;
 		width: 500px;
 	}
+
 	.camera_pag_ul {
 		display: block;
 	}	
+
+	/*Contact Boxes in Contact Page*/
 	.contactBox {
 		float: left;
 		margin-left: 0px;
 		width: 250px;
 	}
 
+	/* Events on Home Page*/
 	#eventBox {
 		float: left;
 	}
@@ -347,6 +371,7 @@ nav a {
 		max-height: 150px;
 	}
 
+	/* History in Home Page*/
 	#history {
 		margin-bottom: 0px;
 	}
@@ -358,6 +383,7 @@ nav a {
 		border-radius: 5px;
 	}
 	
+	/* Recruitment Form in Recruit Page*/
 	#recruitBox input{
 		width: 100%;
 		margin-bottom: 0px;

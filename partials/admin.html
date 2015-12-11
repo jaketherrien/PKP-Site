@@ -11,7 +11,6 @@
             <th></th>
         </tr>
         <tr ng-repeat="announcement in announce"> 
-            <!-- Change to show only MM/DD -->
             <td>{{announcement.time | date: 'shortDate'}}</td> 
             <td>{{announcement.title}}</td>
             <td>{{announcement.description}}</td>
@@ -41,7 +40,7 @@
     </table>
     <button type='submit' class="btn btn-primary" ng-click="addEvent()">Add</button><br>
 
-    <h3>New Members</h3>
+    <h3>Rushees</h3>
         <table class="table">
         <tr>
             <th>Name</th>
@@ -49,7 +48,6 @@
             <th>Phone</th>
             <th></th>
         </tr>
-        <!-- Will use ng-repeat for the Mandrill API call -->
         <tr ng-repeat="recruit in newRecruits"> 
             <td>{{recruit.name}}</td>
             <td>{{recruit.email}}</td>
