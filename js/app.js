@@ -100,9 +100,9 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 	$scope.content = {
 		"message": {
 			"from_email":"jake.therrien13@gmail.com",
-			"to":[{"email":"jake.therrien13@gmail.com"}],
+			"to":[{"email":"webmaster.pkp.uw@gmail.com"}],
 			"subject":"New Rushee for Pi Kappa Phi",
-			"text":"This is my first time using Mandrill!"
+			"text":"Interested in rushing Pi Kapps?"
 		}
 	};
 
