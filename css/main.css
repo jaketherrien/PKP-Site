@@ -273,6 +273,15 @@ nav a {
 	margin-top: 1em;
 }
 
+#signinForm input{
+	width: 60%;
+}
+
+#loginReq {
+	margin-top: 1em;
+	font-size: 30px;
+}
+
 .iconCol {
 	cursor: pointer;
 	width: 5%;
@@ -295,10 +304,7 @@ iframe {
 	margin-bottom: 5em;	
 }
 
-
-
-
-/*Not sure what these ones are -Michael*/
+/*Pickture slide settings*/
 #camera_wrap_1 {
 	height: 100px;
 }
@@ -307,38 +313,17 @@ iframe {
 	display: none;
 }
 
+/*General hide class*/
 .hide {
 	display: none;
 }
 
-
-#loginReq {
-	margin-top: 1em;
-	font-size: 30px;
-}
-
+/*General pictures class*/
 .pictures {
 	max-width: 100%;
 	height: 300px;
 	border-radius: 5px;
 	margin-bottom: 1em;
-}
-
-#slogan {
-	color: rgb(231,166,20);
-	text-align: right;
-	font-weight: bold;
-	margin-top: 3.5em;
-	margin-right: 5em;
-}
-
-.section img{
-	float: left;
-	margin: 1em;
-}
-
-#signinForm input{
-	width: 60%;
 }
 
 /* Screens larger than 768px */
@@ -347,7 +332,6 @@ iframe {
 	/*General style of pictures*/
 	.pictures {
 		float: right;
-		height: 300px;
 		margin-left: 1em;
 		border-radius: 5px;
 	}
@@ -419,7 +403,7 @@ iframe {
 }
 
 @media screen and (min-width:1200px) {
-
+	/*Resize pictures*/
 	#philanPic1 {
 		height: 180px;
 	}
