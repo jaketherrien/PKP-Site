@@ -289,7 +289,7 @@ angular.module('MainApp', ['ngSanitize', 'ui.router','ui.bootstrap','firebase'])
 	function($scope, $http, $uibModalInstance, $firebaseArray, $firebaseObject) {
 
 	// List of positions
-  	$scope.positions = ['President', 'Vice President', 'Treasurer', 'Secretary', 'Historian', 'Warden', 'Chaplain']
+  	$scope.positions = ['Archon', 'Vice Archon', 'Treasurer', 'Secretary', 'Historian', 'Warden', 'Chaplain']
 
 	var officer = $scope.officers.$getRecord($scope.officerIndex);
 	$scope.officer = officer;
